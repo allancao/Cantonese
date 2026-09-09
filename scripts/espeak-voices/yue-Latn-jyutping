@@ -1,0 +1,12 @@
+name Cantonese (Jyutping)
+language yue-Latn-jyutping
+
+translator zhy
+phonemes zhy
+dictionary zhy
+
+// interpret English letters as 1=English words, 2=jyutping
+dictrules 2
+
+words 1
+dict_min 10000

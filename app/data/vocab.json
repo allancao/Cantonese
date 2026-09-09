@@ -1,0 +1,2512 @@
+{
+  "levels": [
+    {
+      "level": 1,
+      "name": "Absolute Beginner",
+      "description": "Your first words: greetings, numbers, family and the verbs you use every day.",
+      "count": 40
+    },
+    {
+      "level": 2,
+      "name": "Beginner",
+      "description": "Asking questions, telling the time, colours, places and everyday courtesies.",
+      "count": 50
+    },
+    {
+      "level": 3,
+      "name": "Elementary",
+      "description": "Classifiers, the body, weather, money, directions and daily routine.",
+      "count": 50
+    },
+    {
+      "level": 4,
+      "name": "Intermediate",
+      "description": "Feelings, work and study, describing things, and joining ideas together.",
+      "count": 43
+    },
+    {
+      "level": 5,
+      "name": "Upper-Intermediate",
+      "description": "Abstract nouns, society, opinions and the phrases that make you sound natural.",
+      "count": 36
+    },
+    {
+      "level": 6,
+      "name": "Advanced",
+      "description": "Idioms, formal written vocabulary, discourse markers and advanced slang.",
+      "count": 28
+    }
+  ],
+  "words": [
+    {
+      "id": "L1-001",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Greetings",
+      "traditional": "你好",
+      "simplified": "你好",
+      "jyutping": "nei5 hou2",
+      "english": "hello"
+    },
+    {
+      "id": "L1-002",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Greetings",
+      "traditional": "早晨",
+      "simplified": "早晨",
+      "jyutping": "zou2 san4",
+      "english": "good morning"
+    },
+    {
+      "id": "L1-003",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Greetings",
+      "traditional": "再見",
+      "simplified": "再见",
+      "jyutping": "zoi3 gin3",
+      "english": "goodbye"
+    },
+    {
+      "id": "L1-004",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Greetings",
+      "traditional": "拜拜",
+      "simplified": "拜拜",
+      "jyutping": "baai1 baai3",
+      "english": "bye-bye"
+    },
+    {
+      "id": "L1-005",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Greetings",
+      "traditional": "唔該",
+      "simplified": "唔该",
+      "jyutping": "m4 goi1",
+      "english": "thanks / excuse me"
+    },
+    {
+      "id": "L1-006",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Greetings",
+      "traditional": "多謝",
+      "simplified": "多谢",
+      "jyutping": "do1 ze6",
+      "english": "thank you (for a gift)"
+    },
+    {
+      "id": "L1-007",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Numbers",
+      "traditional": "零",
+      "simplified": "零",
+      "jyutping": "ling4",
+      "english": "zero"
+    },
+    {
+      "id": "L1-008",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Numbers",
+      "traditional": "一",
+      "simplified": "一",
+      "jyutping": "jat1",
+      "english": "one"
+    },
+    {
+      "id": "L1-009",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Numbers",
+      "traditional": "二",
+      "simplified": "二",
+      "jyutping": "ji6",
+      "english": "two"
+    },
+    {
+      "id": "L1-010",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Numbers",
+      "traditional": "三",
+      "simplified": "三",
+      "jyutping": "saam1",
+      "english": "three"
+    },
+    {
+      "id": "L1-011",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Numbers",
+      "traditional": "四",
+      "simplified": "四",
+      "jyutping": "sei3",
+      "english": "four"
+    },
+    {
+      "id": "L1-012",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Numbers",
+      "traditional": "五",
+      "simplified": "五",
+      "jyutping": "ng5",
+      "english": "five"
+    },
+    {
+      "id": "L1-013",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Numbers",
+      "traditional": "六",
+      "simplified": "六",
+      "jyutping": "luk6",
+      "english": "six"
+    },
+    {
+      "id": "L1-014",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Numbers",
+      "traditional": "七",
+      "simplified": "七",
+      "jyutping": "cat1",
+      "english": "seven"
+    },
+    {
+      "id": "L1-015",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Numbers",
+      "traditional": "八",
+      "simplified": "八",
+      "jyutping": "baat3",
+      "english": "eight"
+    },
+    {
+      "id": "L1-016",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Numbers",
+      "traditional": "九",
+      "simplified": "九",
+      "jyutping": "gau2",
+      "english": "nine"
+    },
+    {
+      "id": "L1-017",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Numbers",
+      "traditional": "十",
+      "simplified": "十",
+      "jyutping": "sap6",
+      "english": "ten"
+    },
+    {
+      "id": "L1-018",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Pronouns",
+      "traditional": "我",
+      "simplified": "我",
+      "jyutping": "ngo5",
+      "english": "I / me"
+    },
+    {
+      "id": "L1-019",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Pronouns",
+      "traditional": "你",
+      "simplified": "你",
+      "jyutping": "nei5",
+      "english": "you"
+    },
+    {
+      "id": "L1-020",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Pronouns",
+      "traditional": "佢",
+      "simplified": "佢",
+      "jyutping": "keoi5",
+      "english": "he / she / it"
+    },
+    {
+      "id": "L1-021",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Pronouns",
+      "traditional": "我哋",
+      "simplified": "我哋",
+      "jyutping": "ngo5 dei6",
+      "english": "we / us"
+    },
+    {
+      "id": "L1-022",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Pronouns",
+      "traditional": "你哋",
+      "simplified": "你哋",
+      "jyutping": "nei5 dei6",
+      "english": "you (plural)"
+    },
+    {
+      "id": "L1-023",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Yes & No",
+      "traditional": "係",
+      "simplified": "係",
+      "jyutping": "hai6",
+      "english": "to be / yes"
+    },
+    {
+      "id": "L1-024",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Yes & No",
+      "traditional": "唔係",
+      "simplified": "唔系",
+      "jyutping": "m4 hai6",
+      "english": "is not / no"
+    },
+    {
+      "id": "L1-025",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Yes & No",
+      "traditional": "好",
+      "simplified": "好",
+      "jyutping": "hou2",
+      "english": "good"
+    },
+    {
+      "id": "L1-026",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Yes & No",
+      "traditional": "冇",
+      "simplified": "冇",
+      "jyutping": "mou5",
+      "english": "to not have"
+    },
+    {
+      "id": "L1-027",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Family",
+      "traditional": "媽媽",
+      "simplified": "妈妈",
+      "jyutping": "maa1 maa1",
+      "english": "mother"
+    },
+    {
+      "id": "L1-028",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Family",
+      "traditional": "爸爸",
+      "simplified": "爸爸",
+      "jyutping": "baa1 baa1",
+      "english": "father"
+    },
+    {
+      "id": "L1-029",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Family",
+      "traditional": "哥哥",
+      "simplified": "哥哥",
+      "jyutping": "go1 go1",
+      "english": "elder brother"
+    },
+    {
+      "id": "L1-030",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Family",
+      "traditional": "姐姐",
+      "simplified": "姐姐",
+      "jyutping": "ze2 ze2",
+      "english": "elder sister"
+    },
+    {
+      "id": "L1-031",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Family",
+      "traditional": "弟弟",
+      "simplified": "弟弟",
+      "jyutping": "dai6 dai6",
+      "english": "younger brother"
+    },
+    {
+      "id": "L1-032",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Family",
+      "traditional": "妹妹",
+      "simplified": "妹妹",
+      "jyutping": "mui6 mui6",
+      "english": "younger sister"
+    },
+    {
+      "id": "L1-033",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Food & Drink",
+      "traditional": "水",
+      "simplified": "水",
+      "jyutping": "seoi2",
+      "english": "water"
+    },
+    {
+      "id": "L1-034",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Food & Drink",
+      "traditional": "茶",
+      "simplified": "茶",
+      "jyutping": "caa4",
+      "english": "tea"
+    },
+    {
+      "id": "L1-035",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Food & Drink",
+      "traditional": "飯",
+      "simplified": "饭",
+      "jyutping": "faan6",
+      "english": "rice / a meal"
+    },
+    {
+      "id": "L1-036",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Food & Drink",
+      "traditional": "麵",
+      "simplified": "面",
+      "jyutping": "min6",
+      "english": "noodles"
+    },
+    {
+      "id": "L1-037",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Food & Drink",
+      "traditional": "咖啡",
+      "simplified": "咖啡",
+      "jyutping": "gaa3 fe1",
+      "english": "coffee"
+    },
+    {
+      "id": "L1-038",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Common Verbs",
+      "traditional": "食",
+      "simplified": "食",
+      "jyutping": "sik6",
+      "english": "to eat"
+    },
+    {
+      "id": "L1-039",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Common Verbs",
+      "traditional": "飲",
+      "simplified": "饮",
+      "jyutping": "jam2",
+      "english": "to drink"
+    },
+    {
+      "id": "L1-040",
+      "level": 1,
+      "levelName": "Absolute Beginner",
+      "category": "Common Verbs",
+      "traditional": "去",
+      "simplified": "去",
+      "jyutping": "heoi3",
+      "english": "to go"
+    },
+    {
+      "id": "L2-001",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Question Words",
+      "traditional": "乜嘢",
+      "simplified": "乜嘢",
+      "jyutping": "mat1 je5",
+      "english": "what"
+    },
+    {
+      "id": "L2-002",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Question Words",
+      "traditional": "邊度",
+      "simplified": "边度",
+      "jyutping": "bin1 dou6",
+      "english": "where"
+    },
+    {
+      "id": "L2-003",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Question Words",
+      "traditional": "邊個",
+      "simplified": "边个",
+      "jyutping": "bin1 go3",
+      "english": "who / which one"
+    },
+    {
+      "id": "L2-004",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Question Words",
+      "traditional": "幾時",
+      "simplified": "几时",
+      "jyutping": "gei2 si4",
+      "english": "when"
+    },
+    {
+      "id": "L2-005",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Question Words",
+      "traditional": "點解",
+      "simplified": "点解",
+      "jyutping": "dim2 gaai2",
+      "english": "why"
+    },
+    {
+      "id": "L2-006",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Question Words",
+      "traditional": "點樣",
+      "simplified": "点样",
+      "jyutping": "dim2 joeng2",
+      "english": "how"
+    },
+    {
+      "id": "L2-007",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Question Words",
+      "traditional": "幾多",
+      "simplified": "几多",
+      "jyutping": "gei2 do1",
+      "english": "how many / how much"
+    },
+    {
+      "id": "L2-008",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Colours",
+      "traditional": "紅色",
+      "simplified": "红色",
+      "jyutping": "hung4 sik1",
+      "english": "red"
+    },
+    {
+      "id": "L2-009",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Colours",
+      "traditional": "藍色",
+      "simplified": "蓝色",
+      "jyutping": "laam4 sik1",
+      "english": "blue"
+    },
+    {
+      "id": "L2-010",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Colours",
+      "traditional": "綠色",
+      "simplified": "绿色",
+      "jyutping": "luk6 sik1",
+      "english": "green"
+    },
+    {
+      "id": "L2-011",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Colours",
+      "traditional": "黃色",
+      "simplified": "黄色",
+      "jyutping": "wong4 sik1",
+      "english": "yellow"
+    },
+    {
+      "id": "L2-012",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Colours",
+      "traditional": "黑色",
+      "simplified": "黑色",
+      "jyutping": "hak1 sik1",
+      "english": "black"
+    },
+    {
+      "id": "L2-013",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Colours",
+      "traditional": "白色",
+      "simplified": "白色",
+      "jyutping": "baak6 sik1",
+      "english": "white"
+    },
+    {
+      "id": "L2-014",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Colours",
+      "traditional": "紫色",
+      "simplified": "紫色",
+      "jyutping": "zi2 sik1",
+      "english": "purple"
+    },
+    {
+      "id": "L2-015",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Time",
+      "traditional": "今日",
+      "simplified": "今日",
+      "jyutping": "gam1 jat6",
+      "english": "today"
+    },
+    {
+      "id": "L2-016",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Time",
+      "traditional": "聽日",
+      "simplified": "听日",
+      "jyutping": "ting1 jat6",
+      "english": "tomorrow"
+    },
+    {
+      "id": "L2-017",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Time",
+      "traditional": "尋日",
+      "simplified": "寻日",
+      "jyutping": "cam4 jat6",
+      "english": "yesterday"
+    },
+    {
+      "id": "L2-018",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Time",
+      "traditional": "而家",
+      "simplified": "而家",
+      "jyutping": "ji4 gaa1",
+      "english": "now"
+    },
+    {
+      "id": "L2-019",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Time",
+      "traditional": "星期",
+      "simplified": "星期",
+      "jyutping": "sing1 kei4",
+      "english": "week"
+    },
+    {
+      "id": "L2-020",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Time",
+      "traditional": "月",
+      "simplified": "月",
+      "jyutping": "jyut6",
+      "english": "month / moon"
+    },
+    {
+      "id": "L2-021",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Time",
+      "traditional": "年",
+      "simplified": "年",
+      "jyutping": "nin4",
+      "english": "year"
+    },
+    {
+      "id": "L2-022",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Time",
+      "traditional": "點鐘",
+      "simplified": "点钟",
+      "jyutping": "dim2 zung1",
+      "english": "o'clock"
+    },
+    {
+      "id": "L2-023",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Places",
+      "traditional": "屋企",
+      "simplified": "屋企",
+      "jyutping": "uk1 kei2",
+      "english": "home"
+    },
+    {
+      "id": "L2-024",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Places",
+      "traditional": "學校",
+      "simplified": "学校",
+      "jyutping": "hok6 haau6",
+      "english": "school"
+    },
+    {
+      "id": "L2-025",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Places",
+      "traditional": "餐廳",
+      "simplified": "餐厅",
+      "jyutping": "caan1 teng1",
+      "english": "restaurant"
+    },
+    {
+      "id": "L2-026",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Places",
+      "traditional": "醫院",
+      "simplified": "医院",
+      "jyutping": "ji1 jyun2",
+      "english": "hospital"
+    },
+    {
+      "id": "L2-027",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Places",
+      "traditional": "銀行",
+      "simplified": "银行",
+      "jyutping": "ngan4 hong4",
+      "english": "bank"
+    },
+    {
+      "id": "L2-028",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Places",
+      "traditional": "商店",
+      "simplified": "商店",
+      "jyutping": "soeng1 dim3",
+      "english": "shop"
+    },
+    {
+      "id": "L2-029",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Places",
+      "traditional": "街市",
+      "simplified": "街市",
+      "jyutping": "gaai1 si5",
+      "english": "wet market"
+    },
+    {
+      "id": "L2-030",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Food & Drink",
+      "traditional": "牛肉",
+      "simplified": "牛肉",
+      "jyutping": "ngau4 juk6",
+      "english": "beef"
+    },
+    {
+      "id": "L2-031",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Food & Drink",
+      "traditional": "豬肉",
+      "simplified": "猪肉",
+      "jyutping": "zyu1 juk6",
+      "english": "pork"
+    },
+    {
+      "id": "L2-032",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Food & Drink",
+      "traditional": "雞",
+      "simplified": "鸡",
+      "jyutping": "gai1",
+      "english": "chicken"
+    },
+    {
+      "id": "L2-033",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Food & Drink",
+      "traditional": "魚",
+      "simplified": "鱼",
+      "jyutping": "jyu4",
+      "english": "fish"
+    },
+    {
+      "id": "L2-034",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Food & Drink",
+      "traditional": "菜",
+      "simplified": "菜",
+      "jyutping": "coi3",
+      "english": "vegetable"
+    },
+    {
+      "id": "L2-035",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Food & Drink",
+      "traditional": "生果",
+      "simplified": "生果",
+      "jyutping": "saang1 gwo2",
+      "english": "fruit"
+    },
+    {
+      "id": "L2-036",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Food & Drink",
+      "traditional": "雞蛋",
+      "simplified": "鸡蛋",
+      "jyutping": "gai1 daan2",
+      "english": "egg"
+    },
+    {
+      "id": "L2-037",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Common Verbs",
+      "traditional": "睇",
+      "simplified": "睇",
+      "jyutping": "tai2",
+      "english": "to look / to watch"
+    },
+    {
+      "id": "L2-038",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Common Verbs",
+      "traditional": "聽",
+      "simplified": "听",
+      "jyutping": "teng1",
+      "english": "to listen"
+    },
+    {
+      "id": "L2-039",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Common Verbs",
+      "traditional": "講",
+      "simplified": "讲",
+      "jyutping": "gong2",
+      "english": "to speak"
+    },
+    {
+      "id": "L2-040",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Common Verbs",
+      "traditional": "買",
+      "simplified": "买",
+      "jyutping": "maai5",
+      "english": "to buy"
+    },
+    {
+      "id": "L2-041",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Common Verbs",
+      "traditional": "賣",
+      "simplified": "卖",
+      "jyutping": "maai6",
+      "english": "to sell"
+    },
+    {
+      "id": "L2-042",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Common Verbs",
+      "traditional": "做",
+      "simplified": "做",
+      "jyutping": "zou6",
+      "english": "to do / to make"
+    },
+    {
+      "id": "L2-043",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Common Verbs",
+      "traditional": "嚟",
+      "simplified": "嚟",
+      "jyutping": "lai4",
+      "english": "to come"
+    },
+    {
+      "id": "L2-044",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Common Verbs",
+      "traditional": "行",
+      "simplified": "行",
+      "jyutping": "haang4",
+      "english": "to walk"
+    },
+    {
+      "id": "L2-045",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Everyday Phrases",
+      "traditional": "對唔住",
+      "simplified": "对唔住",
+      "jyutping": "deoi3 m4 zyu6",
+      "english": "sorry"
+    },
+    {
+      "id": "L2-046",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Everyday Phrases",
+      "traditional": "唔緊要",
+      "simplified": "唔紧要",
+      "jyutping": "m4 gan2 jiu3",
+      "english": "never mind"
+    },
+    {
+      "id": "L2-047",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Everyday Phrases",
+      "traditional": "唔好意思",
+      "simplified": "唔好意思",
+      "jyutping": "m4 hou2 ji3 si3",
+      "english": "excuse me / sorry"
+    },
+    {
+      "id": "L2-048",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Everyday Phrases",
+      "traditional": "冇問題",
+      "simplified": "冇问题",
+      "jyutping": "mou5 man6 tai4",
+      "english": "no problem"
+    },
+    {
+      "id": "L2-049",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Everyday Phrases",
+      "traditional": "好耐冇見",
+      "simplified": "好耐冇见",
+      "jyutping": "hou2 noi6 mou5 gin3",
+      "english": "long time no see"
+    },
+    {
+      "id": "L2-050",
+      "level": 2,
+      "levelName": "Beginner",
+      "category": "Everyday Phrases",
+      "traditional": "點呀",
+      "simplified": "点呀",
+      "jyutping": "dim2 aa1",
+      "english": "how's it going?"
+    },
+    {
+      "id": "L3-001",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Classifiers",
+      "traditional": "個",
+      "simplified": "个",
+      "jyutping": "go3",
+      "english": "general classifier"
+    },
+    {
+      "id": "L3-002",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Classifiers",
+      "traditional": "隻",
+      "simplified": "只",
+      "jyutping": "zek3",
+      "english": "classifier for animals"
+    },
+    {
+      "id": "L3-003",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Classifiers",
+      "traditional": "張",
+      "simplified": "张",
+      "jyutping": "zoeng1",
+      "english": "classifier for flat things"
+    },
+    {
+      "id": "L3-004",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Classifiers",
+      "traditional": "本",
+      "simplified": "本",
+      "jyutping": "bun2",
+      "english": "classifier for books"
+    },
+    {
+      "id": "L3-005",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Classifiers",
+      "traditional": "杯",
+      "simplified": "杯",
+      "jyutping": "bui1",
+      "english": "classifier for cups / a cup"
+    },
+    {
+      "id": "L3-006",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Classifiers",
+      "traditional": "件",
+      "simplified": "件",
+      "jyutping": "gin6",
+      "english": "classifier for items / clothes"
+    },
+    {
+      "id": "L3-007",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Classifiers",
+      "traditional": "條",
+      "simplified": "条",
+      "jyutping": "tiu4",
+      "english": "classifier for long things"
+    },
+    {
+      "id": "L3-008",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Body & Health",
+      "traditional": "頭",
+      "simplified": "头",
+      "jyutping": "tau4",
+      "english": "head"
+    },
+    {
+      "id": "L3-009",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Body & Health",
+      "traditional": "手",
+      "simplified": "手",
+      "jyutping": "sau2",
+      "english": "hand"
+    },
+    {
+      "id": "L3-010",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Body & Health",
+      "traditional": "腳",
+      "simplified": "脚",
+      "jyutping": "goek3",
+      "english": "foot / leg"
+    },
+    {
+      "id": "L3-011",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Body & Health",
+      "traditional": "眼",
+      "simplified": "眼",
+      "jyutping": "ngaan5",
+      "english": "eye"
+    },
+    {
+      "id": "L3-012",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Body & Health",
+      "traditional": "口",
+      "simplified": "口",
+      "jyutping": "hau2",
+      "english": "mouth"
+    },
+    {
+      "id": "L3-013",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Body & Health",
+      "traditional": "肚",
+      "simplified": "肚",
+      "jyutping": "tou5",
+      "english": "belly"
+    },
+    {
+      "id": "L3-014",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Body & Health",
+      "traditional": "病",
+      "simplified": "病",
+      "jyutping": "beng6",
+      "english": "illness / to be ill"
+    },
+    {
+      "id": "L3-015",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Weather",
+      "traditional": "天氣",
+      "simplified": "天气",
+      "jyutping": "tin1 hei3",
+      "english": "weather"
+    },
+    {
+      "id": "L3-016",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Weather",
+      "traditional": "落雨",
+      "simplified": "落雨",
+      "jyutping": "lok6 jyu5",
+      "english": "to rain"
+    },
+    {
+      "id": "L3-017",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Weather",
+      "traditional": "熱",
+      "simplified": "热",
+      "jyutping": "jit6",
+      "english": "hot"
+    },
+    {
+      "id": "L3-018",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Weather",
+      "traditional": "凍",
+      "simplified": "冻",
+      "jyutping": "dung3",
+      "english": "cold"
+    },
+    {
+      "id": "L3-019",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Weather",
+      "traditional": "太陽",
+      "simplified": "太阳",
+      "jyutping": "taai3 joeng4",
+      "english": "sun"
+    },
+    {
+      "id": "L3-020",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Weather",
+      "traditional": "風",
+      "simplified": "风",
+      "jyutping": "fung1",
+      "english": "wind"
+    },
+    {
+      "id": "L3-021",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Money & Shopping",
+      "traditional": "錢",
+      "simplified": "钱",
+      "jyutping": "cin2",
+      "english": "money"
+    },
+    {
+      "id": "L3-022",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Money & Shopping",
+      "traditional": "幾錢",
+      "simplified": "几钱",
+      "jyutping": "gei2 cin4",
+      "english": "how much does it cost?"
+    },
+    {
+      "id": "L3-023",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Money & Shopping",
+      "traditional": "平",
+      "simplified": "平",
+      "jyutping": "peng4",
+      "english": "cheap"
+    },
+    {
+      "id": "L3-024",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Money & Shopping",
+      "traditional": "貴",
+      "simplified": "贵",
+      "jyutping": "gwai3",
+      "english": "expensive"
+    },
+    {
+      "id": "L3-025",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Money & Shopping",
+      "traditional": "找錢",
+      "simplified": "找钱",
+      "jyutping": "zaau2 cin2",
+      "english": "to give change"
+    },
+    {
+      "id": "L3-026",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Money & Shopping",
+      "traditional": "買嘢",
+      "simplified": "买嘢",
+      "jyutping": "maai5 je5",
+      "english": "to go shopping"
+    },
+    {
+      "id": "L3-027",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Money & Shopping",
+      "traditional": "收銀",
+      "simplified": "收银",
+      "jyutping": "sau1 ngan2",
+      "english": "cashier"
+    },
+    {
+      "id": "L3-028",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Directions",
+      "traditional": "左邊",
+      "simplified": "左边",
+      "jyutping": "zo2 bin1",
+      "english": "left side"
+    },
+    {
+      "id": "L3-029",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Directions",
+      "traditional": "右邊",
+      "simplified": "右边",
+      "jyutping": "jau6 bin1",
+      "english": "right side"
+    },
+    {
+      "id": "L3-030",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Directions",
+      "traditional": "前面",
+      "simplified": "前面",
+      "jyutping": "cin4 min6",
+      "english": "in front"
+    },
+    {
+      "id": "L3-031",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Directions",
+      "traditional": "後面",
+      "simplified": "后面",
+      "jyutping": "hau6 min6",
+      "english": "behind"
+    },
+    {
+      "id": "L3-032",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Directions",
+      "traditional": "上面",
+      "simplified": "上面",
+      "jyutping": "soeng6 min6",
+      "english": "above"
+    },
+    {
+      "id": "L3-033",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Directions",
+      "traditional": "下面",
+      "simplified": "下面",
+      "jyutping": "haa6 min6",
+      "english": "below"
+    },
+    {
+      "id": "L3-034",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Directions",
+      "traditional": "對面",
+      "simplified": "对面",
+      "jyutping": "deoi3 min6",
+      "english": "opposite"
+    },
+    {
+      "id": "L3-035",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Transport",
+      "traditional": "巴士",
+      "simplified": "巴士",
+      "jyutping": "baa1 si2",
+      "english": "bus"
+    },
+    {
+      "id": "L3-036",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Transport",
+      "traditional": "地鐵",
+      "simplified": "地铁",
+      "jyutping": "dei6 tit3",
+      "english": "underground railway"
+    },
+    {
+      "id": "L3-037",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Transport",
+      "traditional": "的士",
+      "simplified": "的士",
+      "jyutping": "dik1 si2",
+      "english": "taxi"
+    },
+    {
+      "id": "L3-038",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Transport",
+      "traditional": "火車",
+      "simplified": "火车",
+      "jyutping": "fo2 ce1",
+      "english": "train"
+    },
+    {
+      "id": "L3-039",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Transport",
+      "traditional": "飛機",
+      "simplified": "飞机",
+      "jyutping": "fei1 gei1",
+      "english": "aeroplane"
+    },
+    {
+      "id": "L3-040",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Transport",
+      "traditional": "船",
+      "simplified": "船",
+      "jyutping": "syun4",
+      "english": "boat / ship"
+    },
+    {
+      "id": "L3-041",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Daily Routine",
+      "traditional": "起身",
+      "simplified": "起身",
+      "jyutping": "hei2 san1",
+      "english": "to get up"
+    },
+    {
+      "id": "L3-042",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Daily Routine",
+      "traditional": "瞓覺",
+      "simplified": "瞓觉",
+      "jyutping": "fan3 gaau3",
+      "english": "to sleep"
+    },
+    {
+      "id": "L3-043",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Daily Routine",
+      "traditional": "沖涼",
+      "simplified": "冲凉",
+      "jyutping": "cung1 loeng4",
+      "english": "to take a shower"
+    },
+    {
+      "id": "L3-044",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Daily Routine",
+      "traditional": "返工",
+      "simplified": "返工",
+      "jyutping": "faan1 gung1",
+      "english": "to go to work"
+    },
+    {
+      "id": "L3-045",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Daily Routine",
+      "traditional": "放工",
+      "simplified": "放工",
+      "jyutping": "fong3 gung1",
+      "english": "to finish work"
+    },
+    {
+      "id": "L3-046",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Daily Routine",
+      "traditional": "食飯",
+      "simplified": "食饭",
+      "jyutping": "sik6 faan6",
+      "english": "to have a meal"
+    },
+    {
+      "id": "L3-047",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Daily Routine",
+      "traditional": "洗手",
+      "simplified": "洗手",
+      "jyutping": "sai2 sau2",
+      "english": "to wash one's hands"
+    },
+    {
+      "id": "L3-048",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Daily Routine",
+      "traditional": "換衫",
+      "simplified": "换衫",
+      "jyutping": "wun6 saam1",
+      "english": "to change clothes"
+    },
+    {
+      "id": "L3-049",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Daily Routine",
+      "traditional": "出街",
+      "simplified": "出街",
+      "jyutping": "ceot1 gaai1",
+      "english": "to go out"
+    },
+    {
+      "id": "L3-050",
+      "level": 3,
+      "levelName": "Elementary",
+      "category": "Daily Routine",
+      "traditional": "休息",
+      "simplified": "休息",
+      "jyutping": "jau1 sik1",
+      "english": "to rest"
+    },
+    {
+      "id": "L4-001",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Emotions",
+      "traditional": "開心",
+      "simplified": "开心",
+      "jyutping": "hoi1 sam1",
+      "english": "happy"
+    },
+    {
+      "id": "L4-002",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Emotions",
+      "traditional": "傷心",
+      "simplified": "伤心",
+      "jyutping": "soeng1 sam1",
+      "english": "sad"
+    },
+    {
+      "id": "L4-003",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Emotions",
+      "traditional": "嬲",
+      "simplified": "嬲",
+      "jyutping": "nau1",
+      "english": "angry"
+    },
+    {
+      "id": "L4-004",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Emotions",
+      "traditional": "驚",
+      "simplified": "惊",
+      "jyutping": "geng1",
+      "english": "afraid"
+    },
+    {
+      "id": "L4-005",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Emotions",
+      "traditional": "眼瞓",
+      "simplified": "眼瞓",
+      "jyutping": "ngaan5 fan3",
+      "english": "sleepy"
+    },
+    {
+      "id": "L4-006",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Emotions",
+      "traditional": "緊張",
+      "simplified": "紧张",
+      "jyutping": "gan2 zoeng1",
+      "english": "nervous"
+    },
+    {
+      "id": "L4-007",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Emotions",
+      "traditional": "興奮",
+      "simplified": "兴奋",
+      "jyutping": "hing1 fan5",
+      "english": "excited"
+    },
+    {
+      "id": "L4-008",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Work & Study",
+      "traditional": "工作",
+      "simplified": "工作",
+      "jyutping": "gung1 zok3",
+      "english": "work / job"
+    },
+    {
+      "id": "L4-009",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Work & Study",
+      "traditional": "返學",
+      "simplified": "返学",
+      "jyutping": "faan1 hok6",
+      "english": "to go to school"
+    },
+    {
+      "id": "L4-010",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Work & Study",
+      "traditional": "功課",
+      "simplified": "功课",
+      "jyutping": "gung1 fo3",
+      "english": "homework"
+    },
+    {
+      "id": "L4-011",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Work & Study",
+      "traditional": "考試",
+      "simplified": "考试",
+      "jyutping": "haau2 si5",
+      "english": "exam"
+    },
+    {
+      "id": "L4-012",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Work & Study",
+      "traditional": "老師",
+      "simplified": "老师",
+      "jyutping": "lou5 si1",
+      "english": "teacher"
+    },
+    {
+      "id": "L4-013",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Work & Study",
+      "traditional": "學生",
+      "simplified": "学生",
+      "jyutping": "hok6 saang1",
+      "english": "student"
+    },
+    {
+      "id": "L4-014",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Work & Study",
+      "traditional": "同事",
+      "simplified": "同事",
+      "jyutping": "tung4 si6",
+      "english": "colleague"
+    },
+    {
+      "id": "L4-015",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Descriptions",
+      "traditional": "大",
+      "simplified": "大",
+      "jyutping": "daai6",
+      "english": "big"
+    },
+    {
+      "id": "L4-016",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Descriptions",
+      "traditional": "細",
+      "simplified": "细",
+      "jyutping": "sai3",
+      "english": "small"
+    },
+    {
+      "id": "L4-017",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Descriptions",
+      "traditional": "高",
+      "simplified": "高",
+      "jyutping": "gou1",
+      "english": "tall / high"
+    },
+    {
+      "id": "L4-018",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Descriptions",
+      "traditional": "矮",
+      "simplified": "矮",
+      "jyutping": "ai2",
+      "english": "short (in height)"
+    },
+    {
+      "id": "L4-019",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Descriptions",
+      "traditional": "靚",
+      "simplified": "靓",
+      "jyutping": "leng3",
+      "english": "pretty / good-looking"
+    },
+    {
+      "id": "L4-020",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Descriptions",
+      "traditional": "快",
+      "simplified": "快",
+      "jyutping": "faai3",
+      "english": "fast"
+    },
+    {
+      "id": "L4-021",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Descriptions",
+      "traditional": "慢",
+      "simplified": "慢",
+      "jyutping": "maan6",
+      "english": "slow"
+    },
+    {
+      "id": "L4-022",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Descriptions",
+      "traditional": "難",
+      "simplified": "难",
+      "jyutping": "naan4",
+      "english": "difficult"
+    },
+    {
+      "id": "L4-023",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Communication",
+      "traditional": "電話",
+      "simplified": "电话",
+      "jyutping": "din6 waa2",
+      "english": "telephone"
+    },
+    {
+      "id": "L4-024",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Communication",
+      "traditional": "打電話",
+      "simplified": "打电话",
+      "jyutping": "daa2 din6 waa2",
+      "english": "to make a phone call"
+    },
+    {
+      "id": "L4-025",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Communication",
+      "traditional": "短訊",
+      "simplified": "短讯",
+      "jyutping": "dyun2 seon3",
+      "english": "text message"
+    },
+    {
+      "id": "L4-026",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Communication",
+      "traditional": "電郵",
+      "simplified": "电邮",
+      "jyutping": "din6 jau4",
+      "english": "email"
+    },
+    {
+      "id": "L4-027",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Communication",
+      "traditional": "傾偈",
+      "simplified": "倾偈",
+      "jyutping": "king1 gai2",
+      "english": "to chat"
+    },
+    {
+      "id": "L4-028",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Communication",
+      "traditional": "問",
+      "simplified": "问",
+      "jyutping": "man6",
+      "english": "to ask"
+    },
+    {
+      "id": "L4-029",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Communication",
+      "traditional": "答",
+      "simplified": "答",
+      "jyutping": "daap3",
+      "english": "to answer"
+    },
+    {
+      "id": "L4-030",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Food Culture",
+      "traditional": "飲茶",
+      "simplified": "饮茶",
+      "jyutping": "jam2 caa4",
+      "english": "to go for dim sum"
+    },
+    {
+      "id": "L4-031",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Food Culture",
+      "traditional": "點心",
+      "simplified": "点心",
+      "jyutping": "dim2 sam1",
+      "english": "dim sum"
+    },
+    {
+      "id": "L4-032",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Food Culture",
+      "traditional": "燒賣",
+      "simplified": "烧卖",
+      "jyutping": "siu1 maai6",
+      "english": "siu mai dumpling"
+    },
+    {
+      "id": "L4-033",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Food Culture",
+      "traditional": "蝦餃",
+      "simplified": "虾饺",
+      "jyutping": "haa1 gaau2",
+      "english": "prawn dumpling"
+    },
+    {
+      "id": "L4-034",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Food Culture",
+      "traditional": "奶茶",
+      "simplified": "奶茶",
+      "jyutping": "naai5 caa4",
+      "english": "milk tea"
+    },
+    {
+      "id": "L4-035",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Food Culture",
+      "traditional": "餐牌",
+      "simplified": "餐牌",
+      "jyutping": "caan1 paai4",
+      "english": "menu"
+    },
+    {
+      "id": "L4-036",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Connectives",
+      "traditional": "但係",
+      "simplified": "但系",
+      "jyutping": "daan6 hai6",
+      "english": "but"
+    },
+    {
+      "id": "L4-037",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Connectives",
+      "traditional": "因為",
+      "simplified": "因为",
+      "jyutping": "jan1 wai6",
+      "english": "because"
+    },
+    {
+      "id": "L4-038",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Connectives",
+      "traditional": "所以",
+      "simplified": "所以",
+      "jyutping": "so2 ji5",
+      "english": "so / therefore"
+    },
+    {
+      "id": "L4-039",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Connectives",
+      "traditional": "如果",
+      "simplified": "如果",
+      "jyutping": "jyu4 gwo2",
+      "english": "if"
+    },
+    {
+      "id": "L4-040",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Connectives",
+      "traditional": "不過",
+      "simplified": "不过",
+      "jyutping": "bat1 gwo3",
+      "english": "however"
+    },
+    {
+      "id": "L4-041",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Connectives",
+      "traditional": "同埋",
+      "simplified": "同埋",
+      "jyutping": "tung4 maai4",
+      "english": "and / together with"
+    },
+    {
+      "id": "L4-042",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Connectives",
+      "traditional": "或者",
+      "simplified": "或者",
+      "jyutping": "waak6 ze2",
+      "english": "or / perhaps"
+    },
+    {
+      "id": "L4-043",
+      "level": 4,
+      "levelName": "Intermediate",
+      "category": "Connectives",
+      "traditional": "雖然",
+      "simplified": "虽然",
+      "jyutping": "seoi1 jin4",
+      "english": "although"
+    },
+    {
+      "id": "L5-001",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Abstract Nouns",
+      "traditional": "意見",
+      "simplified": "意见",
+      "jyutping": "ji3 gin3",
+      "english": "opinion"
+    },
+    {
+      "id": "L5-002",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Abstract Nouns",
+      "traditional": "經驗",
+      "simplified": "经验",
+      "jyutping": "ging1 jim6",
+      "english": "experience"
+    },
+    {
+      "id": "L5-003",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Abstract Nouns",
+      "traditional": "機會",
+      "simplified": "机会",
+      "jyutping": "gei1 wui6",
+      "english": "opportunity"
+    },
+    {
+      "id": "L5-004",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Abstract Nouns",
+      "traditional": "問題",
+      "simplified": "问题",
+      "jyutping": "man6 tai4",
+      "english": "problem / question"
+    },
+    {
+      "id": "L5-005",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Abstract Nouns",
+      "traditional": "原因",
+      "simplified": "原因",
+      "jyutping": "jyun4 jan1",
+      "english": "reason / cause"
+    },
+    {
+      "id": "L5-006",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Abstract Nouns",
+      "traditional": "結果",
+      "simplified": "结果",
+      "jyutping": "git3 gwo2",
+      "english": "result"
+    },
+    {
+      "id": "L5-007",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Abstract Nouns",
+      "traditional": "目標",
+      "simplified": "目标",
+      "jyutping": "muk6 biu1",
+      "english": "goal"
+    },
+    {
+      "id": "L5-008",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Society",
+      "traditional": "社會",
+      "simplified": "社会",
+      "jyutping": "se5 wui2",
+      "english": "society"
+    },
+    {
+      "id": "L5-009",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Society",
+      "traditional": "政府",
+      "simplified": "政府",
+      "jyutping": "zing3 fu2",
+      "english": "government"
+    },
+    {
+      "id": "L5-010",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Society",
+      "traditional": "經濟",
+      "simplified": "经济",
+      "jyutping": "ging1 zai3",
+      "english": "economy"
+    },
+    {
+      "id": "L5-011",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Society",
+      "traditional": "文化",
+      "simplified": "文化",
+      "jyutping": "man4 faa3",
+      "english": "culture"
+    },
+    {
+      "id": "L5-012",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Society",
+      "traditional": "環境",
+      "simplified": "环境",
+      "jyutping": "waan4 ging2",
+      "english": "environment"
+    },
+    {
+      "id": "L5-013",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Society",
+      "traditional": "新聞",
+      "simplified": "新闻",
+      "jyutping": "san1 man4",
+      "english": "news"
+    },
+    {
+      "id": "L5-014",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Society",
+      "traditional": "歷史",
+      "simplified": "历史",
+      "jyutping": "lik6 si2",
+      "english": "history"
+    },
+    {
+      "id": "L5-015",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Opinion & Modality",
+      "traditional": "應該",
+      "simplified": "应该",
+      "jyutping": "jing1 goi1",
+      "english": "should"
+    },
+    {
+      "id": "L5-016",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Opinion & Modality",
+      "traditional": "可能",
+      "simplified": "可能",
+      "jyutping": "ho2 nang4",
+      "english": "maybe / possible"
+    },
+    {
+      "id": "L5-017",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Opinion & Modality",
+      "traditional": "一定",
+      "simplified": "一定",
+      "jyutping": "jat1 ding6",
+      "english": "definitely"
+    },
+    {
+      "id": "L5-018",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Opinion & Modality",
+      "traditional": "好似",
+      "simplified": "好似",
+      "jyutping": "hou2 ci5",
+      "english": "to seem / to resemble"
+    },
+    {
+      "id": "L5-019",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Opinion & Modality",
+      "traditional": "覺得",
+      "simplified": "觉得",
+      "jyutping": "gok3 dak1",
+      "english": "to feel / to think"
+    },
+    {
+      "id": "L5-020",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Opinion & Modality",
+      "traditional": "希望",
+      "simplified": "希望",
+      "jyutping": "hei1 mong6",
+      "english": "to hope"
+    },
+    {
+      "id": "L5-021",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Opinion & Modality",
+      "traditional": "需要",
+      "simplified": "需要",
+      "jyutping": "seoi1 jiu3",
+      "english": "to need"
+    },
+    {
+      "id": "L5-022",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Adverbs & Nuance",
+      "traditional": "特別",
+      "simplified": "特别",
+      "jyutping": "dak6 bit6",
+      "english": "especially / special"
+    },
+    {
+      "id": "L5-023",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Adverbs & Nuance",
+      "traditional": "突然",
+      "simplified": "突然",
+      "jyutping": "dat6 jin4",
+      "english": "suddenly"
+    },
+    {
+      "id": "L5-024",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Adverbs & Nuance",
+      "traditional": "差唔多",
+      "simplified": "差唔多",
+      "jyutping": "caa1 m4 do1",
+      "english": "almost / about the same"
+    },
+    {
+      "id": "L5-025",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Adverbs & Nuance",
+      "traditional": "至少",
+      "simplified": "至少",
+      "jyutping": "zi3 siu2",
+      "english": "at least"
+    },
+    {
+      "id": "L5-026",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Adverbs & Nuance",
+      "traditional": "已經",
+      "simplified": "已经",
+      "jyutping": "ji5 ging1",
+      "english": "already"
+    },
+    {
+      "id": "L5-027",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Adverbs & Nuance",
+      "traditional": "仍然",
+      "simplified": "仍然",
+      "jyutping": "jing4 jin4",
+      "english": "still"
+    },
+    {
+      "id": "L5-028",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Adverbs & Nuance",
+      "traditional": "終於",
+      "simplified": "终于",
+      "jyutping": "zung1 jyu1",
+      "english": "finally"
+    },
+    {
+      "id": "L5-029",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Useful Phrases",
+      "traditional": "你食咗飯未",
+      "simplified": "你食咗飯未",
+      "jyutping": "nei5 sik6 zo2 faan6 mei6",
+      "english": "have you eaten yet?"
+    },
+    {
+      "id": "L5-030",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Useful Phrases",
+      "traditional": "唔使客氣",
+      "simplified": "唔使客气",
+      "jyutping": "m4 sai2 haak3 hei3",
+      "english": "you're welcome"
+    },
+    {
+      "id": "L5-031",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Useful Phrases",
+      "traditional": "慢慢嚟",
+      "simplified": "慢慢嚟",
+      "jyutping": "maan6 maan2 lai4",
+      "english": "take it easy"
+    },
+    {
+      "id": "L5-032",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Useful Phrases",
+      "traditional": "加油",
+      "simplified": "加油",
+      "jyutping": "gaa1 jau4",
+      "english": "keep it up!"
+    },
+    {
+      "id": "L5-033",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Useful Phrases",
+      "traditional": "冇所謂",
+      "simplified": "冇所谓",
+      "jyutping": "mou5 so2 wai6",
+      "english": "it doesn't matter"
+    },
+    {
+      "id": "L5-034",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Useful Phrases",
+      "traditional": "講笑",
+      "simplified": "讲笑",
+      "jyutping": "gong2 siu3",
+      "english": "to joke"
+    },
+    {
+      "id": "L5-035",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Useful Phrases",
+      "traditional": "小心",
+      "simplified": "小心",
+      "jyutping": "siu2 sam1",
+      "english": "be careful"
+    },
+    {
+      "id": "L5-036",
+      "level": 5,
+      "levelName": "Upper-Intermediate",
+      "category": "Useful Phrases",
+      "traditional": "得閒飲茶",
+      "simplified": "得闲饮茶",
+      "jyutping": "dak1 haan4 jam2 caa4",
+      "english": "let's meet up sometime"
+    },
+    {
+      "id": "L6-001",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Idioms",
+      "traditional": "一石二鳥",
+      "simplified": "一石二鸟",
+      "jyutping": "jat1 sek6 ji6 niu5",
+      "english": "kill two birds with one stone"
+    },
+    {
+      "id": "L6-002",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Idioms",
+      "traditional": "半途而廢",
+      "simplified": "半途而废",
+      "jyutping": "bun3 tou4 ji4 fai3",
+      "english": "to give up halfway"
+    },
+    {
+      "id": "L6-003",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Idioms",
+      "traditional": "塞翁失馬",
+      "simplified": "塞翁失马",
+      "jyutping": "coi3 jung1 sat1 maa5",
+      "english": "a blessing in disguise"
+    },
+    {
+      "id": "L6-004",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Idioms",
+      "traditional": "一心一意",
+      "simplified": "一心一意",
+      "jyutping": "jat1 sam1 jat1 ji3",
+      "english": "wholeheartedly"
+    },
+    {
+      "id": "L6-005",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Idioms",
+      "traditional": "千方百計",
+      "simplified": "千方百计",
+      "jyutping": "cin1 fong1 baak3 gai3",
+      "english": "by every possible means"
+    },
+    {
+      "id": "L6-006",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Idioms",
+      "traditional": "自相矛盾",
+      "simplified": "自相矛盾",
+      "jyutping": "zi6 soeng1 maau4 teon5",
+      "english": "to contradict oneself"
+    },
+    {
+      "id": "L6-007",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Idioms",
+      "traditional": "開門見山",
+      "simplified": "开门见山",
+      "jyutping": "hoi1 mun4 gin3 saan1",
+      "english": "to get straight to the point"
+    },
+    {
+      "id": "L6-008",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Idioms",
+      "traditional": "井底之蛙",
+      "simplified": "井底之蛙",
+      "jyutping": "zeng2 dai2 zi1 waa1",
+      "english": "a person of limited outlook"
+    },
+    {
+      "id": "L6-009",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Formal & Written",
+      "traditional": "實現",
+      "simplified": "实现",
+      "jyutping": "sat6 jin6",
+      "english": "to realise / to achieve"
+    },
+    {
+      "id": "L6-010",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Formal & Written",
+      "traditional": "發展",
+      "simplified": "发展",
+      "jyutping": "faat3 zin2",
+      "english": "to develop"
+    },
+    {
+      "id": "L6-011",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Formal & Written",
+      "traditional": "影響",
+      "simplified": "影响",
+      "jyutping": "jing2 hoeng2",
+      "english": "to influence / impact"
+    },
+    {
+      "id": "L6-012",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Formal & Written",
+      "traditional": "提供",
+      "simplified": "提供",
+      "jyutping": "tai4 gung1",
+      "english": "to provide"
+    },
+    {
+      "id": "L6-013",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Formal & Written",
+      "traditional": "建立",
+      "simplified": "建立",
+      "jyutping": "gin3 laap6",
+      "english": "to establish"
+    },
+    {
+      "id": "L6-014",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Formal & Written",
+      "traditional": "維持",
+      "simplified": "维持",
+      "jyutping": "wai4 ci4",
+      "english": "to maintain"
+    },
+    {
+      "id": "L6-015",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Formal & Written",
+      "traditional": "促進",
+      "simplified": "促进",
+      "jyutping": "cuk1 zeon3",
+      "english": "to promote / to further"
+    },
+    {
+      "id": "L6-016",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Discourse Markers",
+      "traditional": "換句話說",
+      "simplified": "换句话说",
+      "jyutping": "wun6 geoi3 waa6 syut3",
+      "english": "in other words"
+    },
+    {
+      "id": "L6-017",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Discourse Markers",
+      "traditional": "由此可見",
+      "simplified": "由此可见",
+      "jyutping": "jau4 ci2 ho2 gin3",
+      "english": "from this it can be seen"
+    },
+    {
+      "id": "L6-018",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Discourse Markers",
+      "traditional": "值得注意",
+      "simplified": "值得注意",
+      "jyutping": "zik6 dak1 zyu3 ji3",
+      "english": "worth noting"
+    },
+    {
+      "id": "L6-019",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Discourse Markers",
+      "traditional": "無論如何",
+      "simplified": "无论如何",
+      "jyutping": "mou4 leon6 jyu4 ho4",
+      "english": "in any case"
+    },
+    {
+      "id": "L6-020",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Discourse Markers",
+      "traditional": "首先",
+      "simplified": "首先",
+      "jyutping": "sau2 sin1",
+      "english": "first of all"
+    },
+    {
+      "id": "L6-021",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Discourse Markers",
+      "traditional": "總之",
+      "simplified": "总之",
+      "jyutping": "zung2 zi1",
+      "english": "in short"
+    },
+    {
+      "id": "L6-022",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Discourse Markers",
+      "traditional": "相反",
+      "simplified": "相反",
+      "jyutping": "soeng1 faan2",
+      "english": "on the contrary"
+    },
+    {
+      "id": "L6-023",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Advanced Slang",
+      "traditional": "論盡",
+      "simplified": "论尽",
+      "jyutping": "leon6 zeon6",
+      "english": "clumsy"
+    },
+    {
+      "id": "L6-024",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Advanced Slang",
+      "traditional": "大鑊",
+      "simplified": "大镬",
+      "jyutping": "daai6 wok6",
+      "english": "big trouble"
+    },
+    {
+      "id": "L6-025",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Advanced Slang",
+      "traditional": "執生",
+      "simplified": "执生",
+      "jyutping": "zap1 saang1",
+      "english": "to improvise / play it by ear"
+    },
+    {
+      "id": "L6-026",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Advanced Slang",
+      "traditional": "心思思",
+      "simplified": "心思思",
+      "jyutping": "sam1 si1 si1",
+      "english": "restlessly eager"
+    },
+    {
+      "id": "L6-027",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Advanced Slang",
+      "traditional": "無厘頭",
+      "simplified": "无厘头",
+      "jyutping": "mou4 lei4 tau4",
+      "english": "nonsensical / absurd"
+    },
+    {
+      "id": "L6-028",
+      "level": 6,
+      "levelName": "Advanced",
+      "category": "Advanced Slang",
+      "traditional": "爆冷",
+      "simplified": "爆冷",
+      "jyutping": "baau3 laang5",
+      "english": "an upset / surprise result"
+    }
+  ]
+}

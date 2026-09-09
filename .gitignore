@@ -1,0 +1,14 @@
+node_modules/
+.next/
+out/
+build/
+next-env.d.ts
+*.tsbuildinfo
+
+# Regenerated on every build by scripts/generate-audio.mjs (~8MB of WAVs).
+public/audio/
+
+.env*.local
+.vercel
+.DS_Store
+__pycache__/

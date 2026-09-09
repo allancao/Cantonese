@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Keep the answer field free of the autocorrect and capitalisation that fight
+   romanised input on phones — handled per-input, but this stops iOS zooming on
+   focus, which would otherwise jolt the layout mid-session. */
+input[type="text"] {
+  font-size: max(16px, 1rem);
+}
