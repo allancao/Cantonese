@@ -58,6 +58,33 @@ shouldn't erase progress, but shouldn't advance it either. Box 5 counts as maste
 
 Sessions serve due words first, then never-seen words, then least-recently-seen.
 
+## Access control
+
+`middleware.ts` gates the whole site behind HTTP Basic Auth. Vercel's own Password
+Protection is a paid Pro add-on and is password-only, so this does the job instead:
+real usernames, as many credentials as you like, free on any plan.
+
+Set one environment variable in the Vercel project — comma-separated `user:password`
+pairs:
+
+```
+BASIC_AUTH_USERS="allan:s3cret,gwen:h0nkhonk"
+```
+
+A username cannot contain `:` or `,`; a password cannot contain `,` (the first colon
+separates each pair, so passwords may contain colons). Changing the variable takes
+effect on the next request — no redeploy needed.
+
+The gate covers every path, the audio clips and JS bundle included, not just the HTML.
+Browsers replay credentials automatically, so it costs one prompt on first load.
+
+**It fails closed.** If `BASIC_AUTH_USERS` is unset in production every request gets a
+503 — a missing variable must never silently publish the site. Local `npm run dev`
+skips the gate entirely so development needs no setup.
+
+Turn Vercel Authentication off in the project's Deployment Protection settings once
+this is live, or you'll be asked to log in twice.
+
 ## Sync
 
 Supabase, no accounts. The client generates a random UUID stored as `device_id`; that UUID
