@@ -44,6 +44,24 @@ export default function AboutPage() {
         </section>
 
         <section>
+          <h2 className="mb-1.5 font-semibold text-slate-900 dark:text-slate-100">
+            Answering out loud
+          </h2>
+          <p>
+            Switch to <em>Speak</em> in a session to say the word instead of typing it.
+            This uses your browser&apos;s own speech recognition — Chrome, Edge and
+            Safari have it; Firefox doesn&apos;t — and it needs a connection.
+          </p>
+          <p className="mt-2">
+            One thing to know: recognition returns characters, not Jyutping, so a spoken
+            answer can&apos;t be marked for tone the way a typed one can. It is still a
+            real tone check, just an indirect one — say the wrong tone and the recogniser
+            usually hears a different word, which comes back as a miss. For explicit
+            per-syllable tone feedback, type the Jyutping.
+          </p>
+        </section>
+
+        <section>
           <h2 className="mb-1.5 font-semibold text-slate-900 dark:text-slate-100">Scheduling</h2>
           <p>
             Words move through five Leitner boxes with intervals of 0, 1, 3, 7 and 16 days.

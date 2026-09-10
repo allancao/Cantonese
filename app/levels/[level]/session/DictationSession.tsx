@@ -13,10 +13,37 @@ import {
   recordVerdict,
   saveProgress,
 } from "../../../lib/srs";
+import {
+  isRecognitionSupported,
+  RECOGNITION_MESSAGE,
+  startListening,
+  type RecognitionError,
+  type RecognitionHandle,
+} from "../../../lib/recognition";
 import { pushProgress } from "../../../lib/sync";
 import { parseJyutping } from "../../../lib/tone";
 import type { Verdict, VocabWord } from "../../../lib/types";
 import { levelMeta, wordsForLevel } from "../../../lib/vocab";
+
+type InputMode = "type" | "speak";
+
+const MODE_KEY = "jyut-dictation:input-mode";
+
+function loadMode(): InputMode {
+  try {
+    return window.localStorage.getItem(MODE_KEY) === "speak" ? "speak" : "type";
+  } catch {
+    return "type";
+  }
+}
+
+function saveMode(mode: InputMode) {
+  try {
+    window.localStorage.setItem(MODE_KEY, mode);
+  } catch {
+    // Preference only; the session works either way.
+  }
+}
 
 const VERDICT_STYLE: Record<Verdict, string> = {
   correct: "border-emerald-300 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-950/40",
@@ -39,12 +66,21 @@ export function DictationSession({ level }: { level: number }) {
   const [playing, setPlaying] = useState(false);
   /** Set when neither a clip nor a device voice is available: reveal and carry on. */
   const [textOnly, setTextOnly] = useState(false);
+  const [mode, setMode] = useState<InputMode>("type");
+  const [canSpeak, setCanSpeak] = useState(false);
+  const [listening, setListening] = useState(false);
+  const [interim, setInterim] = useState("");
+  const [micError, setMicError] = useState<RecognitionError | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const micRef = useRef<RecognitionHandle | null>(null);
 
   useEffect(() => {
     const progress = loadProgress();
     setQueue(buildSessionQueue(wordsForLevel(level), progress, DEFAULT_SESSION_SIZE));
     saveProgress({ ...progress, stats: { ...progress.stats, sessions: progress.stats.sessions + 1 } });
+    const supported = isRecognitionSupported();
+    setCanSpeak(supported);
+    if (supported) setMode(loadMode());
   }, [level]);
 
   const word = queue?.[index];
@@ -60,26 +96,68 @@ export function DictationSession({ level }: { level: number }) {
   // which satisfies the browser's gesture requirement. The first word needs the button.
   useEffect(() => {
     if (index > 0 && word) void play();
-    inputRef.current?.focus();
+    if (mode === "type") inputRef.current?.focus();
     // `play` is recreated per word, which is exactly when this should re-run.
-  }, [index, word, play]);
+  }, [index, word, play, mode]);
 
-  function submit() {
-    if (!word || result) return;
-    const graded = gradeAnswer(answer, word);
-    setResult(graded);
-    setTally((current) => ({ ...current, [graded.verdict]: current[graded.verdict] + 1 }));
+  // A live recogniser holds the microphone, so it must not outlive the component.
+  useEffect(() => () => micRef.current?.abort(), []);
 
-    const next = recordVerdict(loadProgress(), word.id, graded.verdict);
-    saveProgress(next);
-    pushProgress(word.id, next.words[word.id]);
+  const submit = useCallback(
+    (value: string) => {
+      if (!word) return;
+      const graded = gradeAnswer(value, word);
+      setResult(graded);
+      setTally((current) => ({ ...current, [graded.verdict]: current[graded.verdict] + 1 }));
+
+      const next = recordVerdict(loadProgress(), word.id, graded.verdict);
+      saveProgress(next);
+      pushProgress(word.id, next.words[word.id]);
+    },
+    [word]
+  );
+
+  function listen() {
+    if (listening || result) return;
+    setMicError(null);
+    setInterim("");
+    setListening(true);
+    micRef.current = startListening({
+      onInterim: setInterim,
+      onResult: (transcript) => {
+        setListening(false);
+        setInterim("");
+        setAnswer(transcript);
+        submit(transcript);
+      },
+      onError: (error) => {
+        setListening(false);
+        setInterim("");
+        setMicError(error);
+      },
+      onEnd: () => setListening(false),
+    });
   }
 
   function advance() {
+    micRef.current?.abort();
+    micRef.current = null;
     setResult(null);
     setAnswer("");
+    setInterim("");
+    setMicError(null);
+    setListening(false);
     setTextOnly(false);
     setIndex((current) => current + 1);
+  }
+
+  function chooseMode(next: InputMode) {
+    micRef.current?.abort();
+    setListening(false);
+    setInterim("");
+    setMicError(null);
+    setMode(next);
+    saveMode(next);
   }
 
   if (!queue) {
@@ -166,11 +244,62 @@ export function DictationSession({ level }: { level: number }) {
         <p className="mt-3 text-center text-xs text-slate-500 dark:text-slate-400">
           {textOnly
             ? "No audio on this device — the characters are shown instead."
-            : "Listen, then type what you heard."}
+            : mode === "speak"
+              ? "Listen, then say it back."
+              : "Listen, then type what you heard."}
         </p>
 
         {textOnly && word ? (
           <p className="mt-3 text-center font-han text-4xl">{word.traditional}</p>
+        ) : null}
+
+        {canSpeak ? (
+          <div className="mt-4 flex justify-center gap-1 rounded-lg bg-slate-100 p-1 text-xs dark:bg-slate-950">
+            {(["type", "speak"] as InputMode[]).map((option) => (
+              <button
+                key={option}
+                type="button"
+                onClick={() => chooseMode(option)}
+                className={`rounded-md px-3 py-1.5 font-medium transition ${
+                  mode === option
+                    ? "bg-white text-slate-900 shadow-sm dark:bg-slate-800 dark:text-slate-100"
+                    : "text-slate-500 dark:text-slate-400"
+                }`}
+              >
+                {option === "type" ? "Type" : "Speak"}
+              </button>
+            ))}
+          </div>
+        ) : null}
+
+        {mode === "speak" ? (
+          <div className="mt-4">
+            <button
+              type="button"
+              onClick={listen}
+              disabled={result !== null || listening}
+              className={`mx-auto flex h-16 w-16 items-center justify-center rounded-full border-2 text-2xl transition active:scale-95 disabled:opacity-50 ${
+                listening
+                  ? "animate-pulse border-rose-400 bg-rose-50 dark:bg-rose-950/40"
+                  : "border-slate-300 bg-white dark:border-slate-700 dark:bg-slate-950"
+              }`}
+              aria-label={listening ? "Listening" : "Tap to answer out loud"}
+            >
+              🎤
+            </button>
+            <p className="mt-2 text-center text-xs text-slate-500 dark:text-slate-400">
+              {listening
+                ? interim || "Listening…"
+                : result
+                  ? " "
+                  : "Tap the mic and say the word"}
+            </p>
+            {micError ? (
+              <p className="mt-1 text-center text-xs text-rose-600 dark:text-rose-400">
+                {RECOGNITION_MESSAGE[micError]}
+              </p>
+            ) : null}
+          </div>
         ) : null}
 
         <form
@@ -178,7 +307,7 @@ export function DictationSession({ level }: { level: number }) {
           onSubmit={(event) => {
             event.preventDefault();
             if (result) advance();
-            else submit();
+            else submit(answer);
           }}
         >
           <input
@@ -187,7 +316,7 @@ export function DictationSession({ level }: { level: number }) {
             value={answer}
             onChange={(event) => setAnswer(event.target.value)}
             readOnly={result !== null}
-            placeholder="nei5 hou2 or 你好"
+            placeholder={mode === "speak" ? "or type it here" : "nei5 hou2 or 你好"}
             autoComplete="off"
             autoCapitalize="none"
             autoCorrect="off"

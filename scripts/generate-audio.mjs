@@ -28,6 +28,45 @@ const VOICE = "yue-Latn-jyutping";
 const SPEED = 135;
 
 /**
+ * espeak-ng starts speaking within ~5ms of sample zero, but phone audio hardware
+ * takes 100-300ms to wake on the first play, which swallows the opening syllable —
+ * "nei5 hou2" arrives as "hou2". Padding the front gives the device time to spin up
+ * before any speech happens.
+ */
+const LEAD_IN_MS = 300;
+
+/** Insert silence at the start of a PCM WAV, fixing the RIFF and data chunk sizes. */
+function padWithSilence(wav, milliseconds) {
+  const view = new DataView(wav.buffer, wav.byteOffset, wav.byteLength);
+  const channels = view.getUint16(22, true);
+  const sampleRate = view.getUint32(24, true);
+  const bitsPerSample = view.getUint16(34, true);
+
+  let offset = 12;
+  while (offset + 8 <= wav.length) {
+    const id = String.fromCharCode(...wav.subarray(offset, offset + 4));
+    const size = view.getUint32(offset + 4, true);
+    if (id === "data") break;
+    offset += 8 + size + (size % 2);
+  }
+  if (offset + 8 > wav.length) throw new Error("no data chunk in WAV");
+
+  const bytesPerFrame = channels * (bitsPerSample / 8);
+  const silenceBytes =
+    Math.round((sampleRate * milliseconds) / 1000) * bytesPerFrame;
+
+  const padded = new Uint8Array(wav.length + silenceBytes);
+  padded.set(wav.subarray(0, offset + 8), 0);
+  // The gap stays zero-filled, which is silence for signed PCM.
+  padded.set(wav.subarray(offset + 8), offset + 8 + silenceBytes);
+
+  const out = new DataView(padded.buffer);
+  out.setUint32(4, padded.length - 8, true);
+  out.setUint32(offset + 4, view.getUint32(offset + 4, true) + silenceBytes, true);
+  return padded;
+}
+
+/**
  * text2wav bundles an espeak-ng data set that predates the jyutping voice: it ships
  * `yue`, whose `dictrules 1` reads Latin letters as English words, so "nei5 hou2"
  * comes out spelled letter by letter. This drops in the same voice definition
@@ -70,7 +109,7 @@ async function main() {
       if (!wav || wav.length < 64) {
         throw new Error(`empty output (${wav ? wav.length : 0} bytes)`);
       }
-      await fs.writeFile(outPath, Buffer.from(wav));
+      await fs.writeFile(outPath, Buffer.from(padWithSilence(wav, LEAD_IN_MS)));
       generated += 1;
     } catch (error) {
       failed += 1;

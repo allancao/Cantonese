@@ -48,7 +48,27 @@ first — the same definition upstream ships, reusing the bundled `zhy` tables.
 seconds). The script is non-fatal: if it fails the build still succeeds and the app falls
 back to device speech synthesis, then to showing the characters as a text exercise.
 
-Playback order lives in `app/lib/audio.ts`.
+Clips are padded with 300ms of leading silence. espeak-ng starts speaking within
+~5ms of sample zero, but phone audio hardware takes 100–300ms to wake on first play,
+which swallowed the opening syllable — `nei5 hou2` arrived as `hou2`.
+
+Playback order lives in `app/lib/audio.ts`, which also carries an `AUDIO_VERSION`
+cache-buster: filenames are stable, so without it a browser keeps serving clips it
+already cached. Bump it whenever the generated audio changes.
+
+## Answering out loud
+
+Sessions offer a Speak mode alongside typing, backed by the Web Speech API
+(`app/lib/recognition.ts`). Cantonese is requested as `yue-Hant-HK`, falling back to
+`zh-HK` — Google's engine names it the first way, Apple's the second.
+
+Recognition returns characters rather than Jyutping, so a spoken answer is graded
+through the same character path as a typed one and cannot be marked per-syllable for
+tone. It remains an indirect tone check: a wrong tone usually transcribes as a
+different word. Typing Jyutping is still the way to get explicit tone feedback.
+
+Support is uneven — no Firefox, and it needs a connection — so every failure mode
+falls back to a message and the text input stays available in Speak mode.
 
 ## Scheduling
 

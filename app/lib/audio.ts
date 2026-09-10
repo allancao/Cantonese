@@ -12,9 +12,16 @@ export interface PlayOptions {
   onUnrecoverable?: () => void;
 }
 
+/**
+ * Bumped whenever the generated clips change, so browsers holding a cached copy at
+ * the same path fetch the new one. Clips are served from a stable filename, so
+ * without this a listener keeps the old audio indefinitely.
+ */
+const AUDIO_VERSION = "2";
+
 function playFile(word: VocabWord): Promise<boolean> {
   return new Promise((resolve) => {
-    const audio = new Audio(`/audio/${word.id}.wav`);
+    const audio = new Audio(`/audio/${word.id}.wav?v=${AUDIO_VERSION}`);
     let settled = false;
     const settle = (ok: boolean) => {
       if (settled) return;
