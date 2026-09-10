@@ -5,8 +5,10 @@ build/
 next-env.d.ts
 *.tsbuildinfo
 
-# Regenerated on every build by scripts/generate-audio.mjs (~8MB of WAVs).
-public/audio/
+# espeak fallback clips are regenerated on every build, so they stay out of git.
+# The neural .mp3 clips from scripts/generate-audio-edge.py ARE committed, because
+# their endpoint is unreachable from the build sandbox.
+public/audio/*.wav
 
 .env*.local
 .vercel

@@ -100,7 +100,8 @@ async function main() {
 
   for (const word of words) {
     const outPath = path.join(OUT_DIR, `${word.id}.wav`);
-    if (existsSync(outPath)) {
+    // A committed neural clip always wins, so don't spend time on a fallback for it.
+    if (existsSync(path.join(OUT_DIR, `${word.id}.mp3`)) || existsSync(outPath)) {
       present += 1;
       continue;
     }

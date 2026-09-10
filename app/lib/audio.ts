@@ -19,9 +19,23 @@ export interface PlayOptions {
  */
 const AUDIO_VERSION = "2";
 
-function playFile(word: VocabWord): Promise<boolean> {
+/**
+ * MP3 first: those are the committed neural-voice clips. The .wav is the espeak
+ * fallback the build generates for anything the neural pass hasn't covered, so a
+ * newly added word still has audio before someone reruns the local script.
+ */
+const EXTENSIONS = ["mp3", "wav"] as const;
+
+/**
+ * Whichever extension last worked is tried first. Without this, a deployment that
+ * has only espeak .wav clips would 404 on .mp3 before every single play, adding a
+ * round trip of silence on exactly the mobile connections least able to spare it.
+ */
+let preferred: (typeof EXTENSIONS)[number] = "mp3";
+
+function playUrl(url: string): Promise<boolean> {
   return new Promise((resolve) => {
-    const audio = new Audio(`/audio/${word.id}.wav?v=${AUDIO_VERSION}`);
+    const audio = new Audio(url);
     let settled = false;
     const settle = (ok: boolean) => {
       if (settled) return;
@@ -42,7 +56,13 @@ export async function playWord(
   word: VocabWord,
   options: PlayOptions = {}
 ): Promise<PlaybackSource | null> {
-  if (await playFile(word)) return "file";
+  const order = [preferred, ...EXTENSIONS.filter((e) => e !== preferred)];
+  for (const extension of order) {
+    if (await playUrl(`/audio/${word.id}.${extension}?v=${AUDIO_VERSION}`)) {
+      preferred = extension;
+      return "file";
+    }
+  }
   if (await speakCantonese(word.traditional)) return "speech";
   options.onUnrecoverable?.();
   return null;

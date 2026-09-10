@@ -48,6 +48,31 @@ first — the same definition upstream ships, reusing the bundled `zhy` tables.
 seconds). The script is non-fatal: if it fails the build still succeeds and the app falls
 back to device speech synthesis, then to showing the characters as a text exercise.
 
+### Better voices
+
+espeak-ng is tonally correct but unmistakably robotic. `scripts/generate-audio-edge.py`
+replaces it with Microsoft Edge's neural `zh-HK` voices, which sound close to a person
+reading. Its endpoint is blocked from the build sandbox, so it runs on your machine and
+the output is committed:
+
+```bash
+pip install edge-tts
+python3 scripts/generate-audio-edge.py        # --list-voices to hear the options
+git add public/audio && git commit -m "Regenerate audio" && git push
+```
+
+Playback prefers `<id>.mp3` and falls back to the espeak `<id>.wav`, so a word added to
+the curriculum still has audio before anyone reruns the neural pass. Only the `.mp3`
+files are committed; the `.wav` fallbacks stay gitignored and build-generated.
+
+The trade-off is the one guarantee espeak gave us: it reads our Jyutping directly, tone
+numbers included, so its audio provably matches the reading on screen. A neural voice
+reads the *characters* and picks its own reading, so the polyphones pinned in
+`scripts/curriculum.py` are worth listening to once — `--only L2-044,L3-023` regenerates
+individual words.
+
+### Lead-in silence
+
 Clips are padded with 300ms of leading silence. espeak-ng starts speaking within
 ~5ms of sample zero, but phone audio hardware takes 100–300ms to wake on first play,
 which swallowed the opening syllable — `nei5 hou2` arrived as `hou2`.
