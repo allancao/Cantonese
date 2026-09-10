@@ -12,6 +12,7 @@
 export type RecognitionError =
   | "unsupported"
   | "not-allowed"
+  | "service-blocked"
   | "no-speech"
   | "audio-capture"
   | "network"
@@ -79,8 +80,11 @@ const LANGUAGES = ["yue-Hant-HK", "zh-HK"];
 function mapError(code: string): RecognitionError {
   switch (code) {
     case "not-allowed":
-    case "service-not-allowed":
       return "not-allowed";
+    // The browser refused the service rather than the microphone — no amount of
+    // changing permissions fixes it, so it needs its own message.
+    case "service-not-allowed":
+      return "service-blocked";
     case "no-speech":
       return "no-speech";
     case "audio-capture":
@@ -168,12 +172,34 @@ export function startListening(callbacks: ListenCallbacks): RecognitionHandle | 
   };
 }
 
-export const RECOGNITION_MESSAGE: Record<RecognitionError, string> = {
+const BASE_MESSAGE: Record<RecognitionError, string> = {
   unsupported: "This browser can't listen — try typing instead.",
   "not-allowed": "Microphone access was blocked. Allow it in your browser settings.",
+  "service-blocked": "This browser won't allow speech recognition.",
   "no-speech": "Didn't catch that — tap the mic and try again.",
   "audio-capture": "No microphone found.",
   network: "Speech recognition needs a connection and couldn't reach the service.",
   language: "This browser has no Cantonese recogniser — try typing instead.",
   unknown: "Something went wrong listening — try again or type your answer.",
 };
+
+/**
+ * Every iOS browser is WebKit underneath, but Apple exposes speech recognition only
+ * to Safari, so Chrome and Firefox on iOS fail with a permission-shaped error that
+ * no permission change can fix. Naming Safari is the only useful advice there.
+ */
+function isNonSafariIos(): boolean {
+  if (typeof navigator === "undefined") return false;
+  const agent = navigator.userAgent;
+  return /iPhone|iPad|iPod/.test(agent) && /CriOS|FxiOS|EdgiOS|OPiOS/.test(agent);
+}
+
+export function recognitionMessage(error: RecognitionError): string {
+  const base = BASE_MESSAGE[error];
+  const blocked =
+    error === "service-blocked" || error === "not-allowed" || error === "unsupported";
+  if (blocked && isNonSafariIos()) {
+    return `${base} On iOS, only Safari can do speech recognition — open this page in Safari, or type your answer.`;
+  }
+  return base;
+}

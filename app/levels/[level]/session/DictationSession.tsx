@@ -15,7 +15,7 @@ import {
 } from "../../../lib/srs";
 import {
   isRecognitionSupported,
-  RECOGNITION_MESSAGE,
+  recognitionMessage,
   startListening,
   type RecognitionError,
   type RecognitionHandle,
@@ -296,7 +296,7 @@ export function DictationSession({ level }: { level: number }) {
             </p>
             {micError ? (
               <p className="mt-1 text-center text-xs text-rose-600 dark:text-rose-400">
-                {RECOGNITION_MESSAGE[micError]}
+                {recognitionMessage(micError)}
               </p>
             ) : null}
           </div>
