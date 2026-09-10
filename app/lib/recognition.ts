@@ -27,7 +27,8 @@ export interface RecognitionHandle {
 export interface ListenCallbacks {
   onInterim?(transcript: string): void;
   onResult(transcript: string): void;
-  onError(error: RecognitionError): void;
+  /** `raw` is the browser's own error string, surfaced for diagnosis. */
+  onError(error: RecognitionError, raw?: string): void;
   onEnd?(): void;
 }
 
@@ -101,7 +102,7 @@ function mapError(code: string): RecognitionError {
 export function startListening(callbacks: ListenCallbacks): RecognitionHandle | null {
   const Recognition = constructor();
   if (!Recognition) {
-    callbacks.onError("unsupported");
+    callbacks.onError("unsupported", "no-constructor");
     return null;
   }
 
@@ -141,23 +142,23 @@ export function startListening(callbacks: ListenCallbacks): RecognitionHandle | 
       }
       if (event.error === "aborted" || cancelled) return;
       settled = true;
-      callbacks.onError(mapError(event.error));
+      callbacks.onError(mapError(event.error), event.error);
     };
 
     recognition.onend = () => {
       // Ending without a final result means the listener heard nothing usable.
       if (!settled && !cancelled) {
         settled = true;
-        callbacks.onError("no-speech");
+        callbacks.onError("no-speech", "ended-without-result");
       }
       callbacks.onEnd?.();
     };
 
     try {
       recognition.start();
-    } catch {
+    } catch (error) {
       settled = true;
-      callbacks.onError("unknown");
+      callbacks.onError("unknown", `start-threw: ${(error as Error).name}`);
     }
   }
 

@@ -71,6 +71,7 @@ export function DictationSession({ level }: { level: number }) {
   const [listening, setListening] = useState(false);
   const [interim, setInterim] = useState("");
   const [micError, setMicError] = useState<RecognitionError | null>(null);
+  const [micErrorCode, setMicErrorCode] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const micRef = useRef<RecognitionHandle | null>(null);
 
@@ -120,6 +121,7 @@ export function DictationSession({ level }: { level: number }) {
   function listen() {
     if (listening || result) return;
     setMicError(null);
+    setMicErrorCode(null);
     setInterim("");
     setListening(true);
     micRef.current = startListening({
@@ -130,10 +132,11 @@ export function DictationSession({ level }: { level: number }) {
         setAnswer(transcript);
         submit(transcript);
       },
-      onError: (error) => {
+      onError: (error, raw) => {
         setListening(false);
         setInterim("");
         setMicError(error);
+        setMicErrorCode(raw ?? null);
       },
       onEnd: () => setListening(false),
     });
@@ -295,9 +298,16 @@ export function DictationSession({ level }: { level: number }) {
                   : "Tap the mic and say the word"}
             </p>
             {micError ? (
-              <p className="mt-1 text-center text-xs text-rose-600 dark:text-rose-400">
-                {recognitionMessage(micError)}
-              </p>
+              <>
+                <p className="mt-1 text-center text-xs text-rose-600 dark:text-rose-400">
+                  {recognitionMessage(micError)}
+                </p>
+                {micErrorCode ? (
+                  <p className="mt-0.5 text-center font-mono text-[10px] text-slate-400 dark:text-slate-500">
+                    {micErrorCode}
+                  </p>
+                ) : null}
+              </>
             ) : null}
           </div>
         ) : null}
