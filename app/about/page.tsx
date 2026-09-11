@@ -48,9 +48,24 @@ export default function AboutPage() {
             Answering out loud
           </h2>
           <p>
-            Switch to <em>Speak</em> in a session to say the word instead of typing it.
-            This uses your browser&apos;s own speech recognition — Chrome, Edge and
-            Safari have it; Firefox doesn&apos;t — and it needs a connection.
+            <em>Speak</em> mode is pronunciation practice rather than recall: the
+            Jyutping and the characters are shown up front, so you know exactly what
+            to say, and the score is only about how you say it. It uses your
+            browser&apos;s own speech recognition — Chrome, Edge and Safari have it;
+            Firefox doesn&apos;t — and it needs a connection.
+          </p>
+          <p className="mt-2">
+            Grading works by romanising what the recogniser heard and comparing it
+            syllable by syllable. Say the wrong tone and a recogniser trained on native
+            speech hears a different word — 睡 <em>seoi6</em> instead of 水{" "}
+            <em>seoi2</em> — and that word&apos;s reading is what reveals the slip, so
+            the app can tell you which syllable went astray.
+          </p>
+          <p className="mt-2">
+            Worth being clear about what that is: a measure of whether a recogniser
+            understood you as saying the right word, not a phonetic analysis of your
+            voice. It catches wrong tones and wrong syllables well. It can&apos;t tell
+            you that an otherwise-correct vowel was a little too open.
           </p>
           <p className="mt-2">
             If your browser refuses — iOS in particular is inconsistent about this —

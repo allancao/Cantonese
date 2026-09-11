@@ -85,15 +85,32 @@ already cached. Bump it whenever the generated audio changes.
 
 Sessions offer a Speak mode alongside typing, backed by the Web Speech API
 (`app/lib/recognition.ts`). Cantonese is requested as `yue-Hant-HK`, falling back to
-`zh-HK` — Google's engine names it the first way, Apple's the second.
+`zh-HK` — Google's engine names it the first way, Apple's the second. Safari reports
+an unknown locale as `service-not-allowed` rather than `language-not-supported`, so
+both advance to the next language, and Safari often ends a session having emitted
+only interim results, so the last interim is used when no final arrives.
 
-Recognition returns characters rather than Jyutping, so a spoken answer is graded
-through the same character path as a typed one and cannot be marked per-syllable for
-tone. It remains an indirect tone check: a wrong tone usually transcribes as a
-different word. Typing Jyutping is still the way to get explicit tone feedback.
+Speak mode is pronunciation practice, not recall: the reading is shown up front and
+the score is only about how it was said. `gradePronunciation` romanises the
+transcript with `app/data/readings.json` — every Jyutping reading CC-Canto attests
+for 6768 single characters — and compares syllable by syllable. A wrong tone is
+transcribed as a different word, and that word's reading is what exposes it, which
+is how the app names the syllable that slipped.
+
+Rebuild the readings map when the dictionary changes:
+
+```bash
+python3 scripts/build_readings.py cc-canto-data
+```
+
+Be clear on what this measures: whether a recogniser trained on native speech
+understood the right word, not a phonetic analysis of the speaker. It catches wrong
+tones and wrong syllables; it cannot fault an otherwise-correct vowel. Real
+phoneme-level scoring would need a pronunciation-assessment API.
 
 Support is uneven — no Firefox, and it needs a connection — so every failure mode
-falls back to a message and the text input stays available in Speak mode.
+falls back to a message, the text input stays available in Speak mode, and a hard
+block offers the device's own keyboard dictation instead.
 
 ## Scheduling
 

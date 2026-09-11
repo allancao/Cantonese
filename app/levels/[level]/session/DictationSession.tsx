@@ -6,7 +6,7 @@ import { JyutpingSyllable } from "../../../components/JyutpingSyllable";
 import { ScriptToggle, useScriptPreference } from "../../../components/ScriptToggle";
 import { ToneLegend } from "../../../components/ToneLegend";
 import { playWord } from "../../../lib/audio";
-import { gradeAnswer, type MatchResult } from "../../../lib/matching";
+import { gradeAnswer, gradePronunciation, type MatchResult } from "../../../lib/matching";
 import {
   buildSessionQueue,
   DEFAULT_SESSION_SIZE,
@@ -115,9 +115,9 @@ export function DictationSession({ level }: { level: number }) {
   useEffect(() => () => micRef.current?.abort(), []);
 
   const submit = useCallback(
-    (value: string) => {
+    (value: string, spoken = false) => {
       if (!word) return;
-      const graded = gradeAnswer(value, word);
+      const graded = spoken ? gradePronunciation(value, word) : gradeAnswer(value, word);
       setResult(graded);
       setTally((current) => ({ ...current, [graded.verdict]: current[graded.verdict] + 1 }));
 
@@ -140,7 +140,7 @@ export function DictationSession({ level }: { level: number }) {
         setListening(false);
         setInterim("");
         setAnswer(transcript);
-        submit(transcript);
+        submit(transcript, true);
       },
       onError: (error, raw) => {
         setListening(false);
@@ -258,7 +258,7 @@ export function DictationSession({ level }: { level: number }) {
           {textOnly
             ? "No audio on this device — the characters are shown instead."
             : mode === "speak"
-              ? "Listen, then say it back."
+              ? "Listen, then say it back — you're scored on the pronunciation."
               : "Listen, then type what you heard."}
         </p>
 
@@ -272,6 +272,22 @@ export function DictationSession({ level }: { level: number }) {
           >
             {script === "jyutping" ? word.jyutping : word.traditional}
           </p>
+        ) : null}
+
+        {mode === "speak" && !result && word ? (
+          <div className="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-3 dark:border-slate-800 dark:bg-slate-950/60">
+            <p className="text-center text-[11px] uppercase tracking-wide text-slate-500 dark:text-slate-400">
+              Say this
+            </p>
+            <div className="mt-2 flex flex-wrap justify-center gap-1.5 text-lg">
+              {syllables.map((syllable, position) => (
+                <JyutpingSyllable key={`say-${word.id}-${position}`} syllable={syllable} />
+              ))}
+            </div>
+            <p className="mt-2 text-center font-han text-2xl text-slate-600 dark:text-slate-400">
+              {word.traditional}
+            </p>
+          </div>
         ) : null}
 
         {canSpeak ? (
@@ -439,6 +455,12 @@ export function DictationSession({ level }: { level: number }) {
           <p className="mt-1 text-center text-xs text-slate-500 dark:text-slate-400">
             {word.category}
           </p>
+          {result.heard ? (
+            <p className="mt-3 text-center text-xs text-slate-500 dark:text-slate-400">
+              heard <span className="font-han">{result.heard}</span>
+              {result.heardJyutping ? ` · ${result.heardJyutping}` : ""}
+            </p>
+          ) : null}
           <ScriptToggle className="mx-auto mt-4 max-w-xs" />
         </div>
       ) : null}
