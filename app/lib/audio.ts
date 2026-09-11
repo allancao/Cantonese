@@ -10,6 +10,8 @@ export interface PlayOptions {
    * rather than leaving the learner stuck on silence.
    */
   onUnrecoverable?: () => void;
+  /** Playback rate, 1 being the clip as rendered. */
+  rate?: number;
 }
 
 /**
@@ -33,9 +35,16 @@ const EXTENSIONS = ["mp3", "wav"] as const;
  */
 let preferred: (typeof EXTENSIONS)[number] = "mp3";
 
-function playUrl(url: string): Promise<boolean> {
+function playUrl(url: string, rate: number): Promise<boolean> {
   return new Promise((resolve) => {
     const audio = new Audio(url);
+    // Cantonese tones ARE pitch, so slowing playback must time-stretch rather than
+    // resample — otherwise every tone drags downward and the app teaches the wrong
+    // contour. Modern browsers default this on; Safari needs the prefixed property.
+    const stretchable = audio as HTMLAudioElement & { webkitPreservesPitch?: boolean };
+    stretchable.preservesPitch = true;
+    stretchable.webkitPreservesPitch = true;
+    audio.playbackRate = rate;
     let settled = false;
     const settle = (ok: boolean) => {
       if (settled) return;
@@ -56,14 +65,15 @@ export async function playWord(
   word: VocabWord,
   options: PlayOptions = {}
 ): Promise<PlaybackSource | null> {
+  const rate = options.rate ?? 1;
   const order = [preferred, ...EXTENSIONS.filter((e) => e !== preferred)];
   for (const extension of order) {
-    if (await playUrl(`/audio/${word.id}.${extension}?v=${AUDIO_VERSION}`)) {
+    if (await playUrl(`/audio/${word.id}.${extension}?v=${AUDIO_VERSION}`, rate)) {
       preferred = extension;
       return "file";
     }
   }
-  if (await speakCantonese(word.traditional)) return "speech";
+  if (await speakCantonese(word.traditional, rate)) return "speech";
   options.onUnrecoverable?.();
   return null;
 }

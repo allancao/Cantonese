@@ -71,6 +71,17 @@ reads the *characters* and picks its own reading, so the polyphones pinned in
 `scripts/curriculum.py` are worth listening to once — `--only L2-044,L3-023` regenerates
 individual words.
 
+### Playback speed
+
+A 75% option scales `playbackRate`. The clips are already rendered below
+conversational pace, so this lands near two-thirds of native speed — slow enough to
+separate syllables while the prosody holds; below roughly 0.6 the time-stretching
+artefacts start smearing tone contours.
+
+`preservesPitch` (and Safari's `webkitPreservesPitch`) are set explicitly, because
+Cantonese tones *are* pitch: resampling instead of time-stretching would drag every
+tone downward and teach the wrong contour.
+
 ### Lead-in silence
 
 Clips are padded with 300ms of leading silence. espeak-ng starts speaking within

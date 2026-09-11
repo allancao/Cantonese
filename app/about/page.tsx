@@ -95,6 +95,14 @@ export default function AboutPage() {
 
         <section>
           <h2 className="mb-1.5 font-semibold text-slate-900 dark:text-slate-100">Audio</h2>
+          <p className="mb-2">
+            <em>Play slower</em> drops playback to 75%. The clips are already rendered
+            below conversational pace, so that lands near two-thirds of native speed —
+            slow enough to pull a phrase apart, while the rhythm still holds. Playback
+            time-stretches rather than resampling, so the pitch is unchanged: in a tonal
+            language, slowing audio the naive way would drag every tone downward and
+            teach the wrong contour.
+          </p>
           <p>
             Every clip is pre-rendered at build time with espeak-ng, using a voice that
             reads Jyutping directly, tone numbers included — so what you hear matches the

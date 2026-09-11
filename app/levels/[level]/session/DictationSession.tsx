@@ -6,6 +6,7 @@ import { JyutpingSyllable } from "../../../components/JyutpingSyllable";
 import { ScriptToggle, useScriptPreference } from "../../../components/ScriptToggle";
 import { ToneLegend } from "../../../components/ToneLegend";
 import { playWord } from "../../../lib/audio";
+import { loadSpeed, saveSpeed, SPEED_EVENT, type PlaybackSpeed } from "../../../lib/display";
 import { gradeAnswer, gradePronunciation, type MatchResult } from "../../../lib/matching";
 import {
   buildSessionQueue,
@@ -82,6 +83,7 @@ export function DictationSession({ level }: { level: number }) {
   const [micError, setMicError] = useState<RecognitionError | null>(null);
   const [micErrorCode, setMicErrorCode] = useState<string | null>(null);
   const script = useScriptPreference();
+  const [speed, setSpeed] = useState<PlaybackSpeed>(1);
   const inputRef = useRef<HTMLInputElement>(null);
   const micRef = useRef<RecognitionHandle | null>(null);
 
@@ -92,6 +94,10 @@ export function DictationSession({ level }: { level: number }) {
     const supported = isRecognitionSupported();
     setCanSpeak(supported);
     if (supported) setMode(loadMode());
+    const refreshSpeed = () => setSpeed(loadSpeed());
+    refreshSpeed();
+    window.addEventListener(SPEED_EVENT, refreshSpeed);
+    return () => window.removeEventListener(SPEED_EVENT, refreshSpeed);
   }, [level]);
 
   const word = queue?.[index];
@@ -99,9 +105,9 @@ export function DictationSession({ level }: { level: number }) {
   const play = useCallback(async () => {
     if (!word) return;
     setPlaying(true);
-    await playWord(word, { onUnrecoverable: () => setTextOnly(true) });
+    await playWord(word, { onUnrecoverable: () => setTextOnly(true), rate: speed });
     setPlaying(false);
-  }, [word]);
+  }, [word, speed]);
 
   // Autoplay only from the second word on: reaching it required a click or Enter,
   // which satisfies the browser's gesture requirement. The first word needs the button.
@@ -254,6 +260,21 @@ export function DictationSession({ level }: { level: number }) {
         >
           {playing ? "…" : "▶"}
         </button>
+        <div className="mt-3 flex justify-center">
+          <button
+            type="button"
+            onClick={() => saveSpeed(speed === 1 ? 0.75 : 1)}
+            aria-pressed={speed !== 1}
+            className={`rounded-full border px-3 py-1 text-xs font-medium transition ${
+              speed === 1
+                ? "border-slate-300 text-slate-500 dark:border-slate-700 dark:text-slate-400"
+                : "border-slate-900 bg-slate-900 text-white dark:border-slate-100 dark:bg-slate-100 dark:text-slate-900"
+            }`}
+          >
+            {speed === 1 ? "Play slower" : "Slower · 75%"}
+          </button>
+        </div>
+
         <p className="mt-3 text-center text-xs text-slate-500 dark:text-slate-400">
           {textOnly
             ? "No audio on this device — the characters are shown instead."

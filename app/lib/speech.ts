@@ -35,7 +35,7 @@ export function isSpeechAvailable(): boolean {
 }
 
 /** Returns false when no Cantonese voice is installed, so the caller can degrade. */
-export async function speakCantonese(text: string): Promise<boolean> {
+export async function speakCantonese(text: string, rate = 1): Promise<boolean> {
   if (!isSpeechAvailable()) return false;
   await waitForVoices();
   const voice = cantoneseVoice();
@@ -45,7 +45,8 @@ export async function speakCantonese(text: string): Promise<boolean> {
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.voice = voice;
   utterance.lang = voice.lang;
-  utterance.rate = 0.85;
+  // Already slower than conversational; the preference scales it further.
+  utterance.rate = 0.85 * rate;
   window.speechSynthesis.speak(utterance);
   return true;
 }
