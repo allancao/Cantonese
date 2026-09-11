@@ -45,6 +45,14 @@ function saveMode(mode: InputMode) {
   }
 }
 
+/** Failures no retry will fix, where the keyboard's own dictation is the way out. */
+const BLOCKED_ERRORS: RecognitionError[] = [
+  "unsupported",
+  "not-allowed",
+  "service-blocked",
+  "language",
+];
+
 const VERDICT_STYLE: Record<Verdict, string> = {
   correct: "border-emerald-300 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-950/40",
   partial: "border-amber-300 bg-amber-50 dark:border-amber-800 dark:bg-amber-950/40",
@@ -306,6 +314,17 @@ export function DictationSession({ level }: { level: number }) {
                   <p className="mt-0.5 text-center font-mono text-[10px] text-slate-400 dark:text-slate-500">
                     {micErrorCode}
                   </p>
+                ) : null}
+                {BLOCKED_ERRORS.includes(micError) ? (
+                  // The device's own keyboard dictation still works when the browser
+                  // refuses the Web Speech API, and it reaches the same grading path.
+                  <button
+                    type="button"
+                    onClick={() => chooseMode("type")}
+                    className="mt-2 w-full rounded-lg border border-slate-300 px-3 py-2 text-xs font-medium dark:border-slate-700"
+                  >
+                    Speak with your keyboard&apos;s mic key instead
+                  </button>
                 ) : null}
               </>
             ) : null}

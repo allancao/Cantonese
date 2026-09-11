@@ -53,6 +53,13 @@ export default function AboutPage() {
             Safari have it; Firefox doesn&apos;t — and it needs a connection.
           </p>
           <p className="mt-2">
+            If your browser refuses — iOS in particular is inconsistent about this —
+            switch to <em>Type</em> and use the microphone key on your own keyboard
+            instead. Your device dictates straight into the answer box, and the app
+            grades it identically. On iOS that needs a Cantonese keyboard added under
+            Settings → General → Keyboard.
+          </p>
+          <p className="mt-2">
             One thing to know: recognition returns characters, not Jyutping, so a spoken
             answer can&apos;t be marked for tone the way a typed one can. It is still a
             real tone check, just an indirect one — say the wrong tone and the recogniser

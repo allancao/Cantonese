@@ -135,7 +135,12 @@ export function startListening(callbacks: ListenCallbacks): RecognitionHandle | 
     };
 
     recognition.onerror = (event) => {
-      if (event.error === "language-not-supported" && languageIndex + 1 < LANGUAGES.length) {
+      // WebKit reports an unknown locale as "service-not-allowed" rather than
+      // "language-not-supported", so both have to advance to the next language —
+      // otherwise Safari never gets asked for zh-HK after refusing yue-Hant-HK.
+      const retryable =
+        event.error === "language-not-supported" || event.error === "service-not-allowed";
+      if (retryable && languageIndex + 1 < LANGUAGES.length) {
         languageIndex += 1;
         run();
         return;
