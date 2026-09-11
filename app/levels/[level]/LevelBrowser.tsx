@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { JyutpingSyllable } from "../../components/JyutpingSyllable";
+import { ScriptToggle, useScriptPreference } from "../../components/ScriptToggle";
 import { PROGRESS_EVENT } from "../../components/SyncInit";
 import { dueCount, loadProgress, masteryForLevel, MASTERED_BOX } from "../../lib/srs";
 import { parseJyutping } from "../../lib/tone";
@@ -16,6 +17,7 @@ const EMPTY: ProgressState = {
 
 export function LevelBrowser({ level }: { level: number }) {
   const [progress, setProgress] = useState<ProgressState>(EMPTY);
+  const script = useScriptPreference();
 
   useEffect(() => {
     const refresh = () => setProgress(loadProgress());
@@ -51,6 +53,8 @@ export function LevelBrowser({ level }: { level: number }) {
         </p>
       </header>
 
+      <ScriptToggle className="mb-3" />
+
       <Link
         href={`/levels/${level}/session`}
         className="block rounded-xl bg-slate-900 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-slate-700 active:scale-[0.99] dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white"
@@ -69,7 +73,9 @@ export function LevelBrowser({ level }: { level: number }) {
                 const mastered = (progress.words[word.id]?.box ?? 0) >= MASTERED_BOX;
                 return (
                   <li key={word.id} className="flex items-center gap-3 px-3 py-2.5">
-                    <span className="font-han text-xl">{word.traditional}</span>
+                    {script === "characters" ? (
+                      <span className="font-han text-xl">{word.traditional}</span>
+                    ) : null}
                     <span className="flex flex-wrap items-center gap-1 text-sm">
                       {parseJyutping(word.jyutping).map((syllable, index) => (
                         <JyutpingSyllable
@@ -79,6 +85,11 @@ export function LevelBrowser({ level }: { level: number }) {
                         />
                       ))}
                     </span>
+                    {script === "jyutping" ? (
+                      <span className="font-han text-lg text-slate-500 dark:text-slate-400">
+                        {word.traditional}
+                      </span>
+                    ) : null}
                     <span className="ml-auto flex items-center gap-2 text-right text-xs text-slate-500 dark:text-slate-400">
                       {word.english}
                       {mastered ? (

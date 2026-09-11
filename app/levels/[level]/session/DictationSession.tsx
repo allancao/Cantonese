@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { JyutpingSyllable } from "../../../components/JyutpingSyllable";
+import { ScriptToggle, useScriptPreference } from "../../../components/ScriptToggle";
 import { ToneLegend } from "../../../components/ToneLegend";
 import { playWord } from "../../../lib/audio";
 import { gradeAnswer, type MatchResult } from "../../../lib/matching";
@@ -80,6 +81,7 @@ export function DictationSession({ level }: { level: number }) {
   const [interim, setInterim] = useState("");
   const [micError, setMicError] = useState<RecognitionError | null>(null);
   const [micErrorCode, setMicErrorCode] = useState<string | null>(null);
+  const script = useScriptPreference();
   const inputRef = useRef<HTMLInputElement>(null);
   const micRef = useRef<RecognitionHandle | null>(null);
 
@@ -261,7 +263,15 @@ export function DictationSession({ level }: { level: number }) {
         </p>
 
         {textOnly && word ? (
-          <p className="mt-3 text-center font-han text-4xl">{word.traditional}</p>
+          <p
+            className={
+              script === "jyutping"
+                ? "mt-3 text-center text-2xl font-medium"
+                : "mt-3 text-center font-han text-4xl"
+            }
+          >
+            {script === "jyutping" ? word.jyutping : word.traditional}
+          </p>
         ) : null}
 
         {canSpeak ? (
@@ -386,22 +396,42 @@ export function DictationSession({ level }: { level: number }) {
           </div>
           <p className="mt-0.5 text-sm text-slate-700 dark:text-slate-300">{result.detail}</p>
 
-          <p className="mt-4 text-center font-han text-5xl">{word.traditional}</p>
-          {word.simplified !== word.traditional ? (
-            <p className="mt-1 text-center text-xs text-slate-500 dark:text-slate-400">
-              simplified {word.simplified}
-            </p>
-          ) : null}
-
-          <div className="mt-4 flex flex-wrap justify-center gap-1.5">
-            {syllables.map((syllable, position) => (
-              <JyutpingSyllable
-                key={`${word.id}-${position}`}
-                syllable={syllable}
-                flagged={result.toneErrors.includes(position)}
-              />
-            ))}
-          </div>
+          {/* Whichever script the learner reads goes first and largest; the other
+              stays on screen so it keeps being absorbed rather than hidden. */}
+          {(script === "jyutping"
+            ? (["jyutping", "characters"] as const)
+            : (["characters", "jyutping"] as const)
+          ).map((part, order) =>
+            part === "jyutping" ? (
+              <div
+                key="jyutping"
+                className={`flex flex-wrap justify-center gap-1.5 ${order === 0 ? "mt-4 text-lg" : "mt-4"}`}
+              >
+                {syllables.map((syllable, position) => (
+                  <JyutpingSyllable
+                    key={`${word.id}-${position}`}
+                    syllable={syllable}
+                    flagged={result.toneErrors.includes(position)}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div key="characters">
+                <p
+                  className={`mt-4 text-center font-han ${
+                    order === 0 ? "text-5xl" : "text-2xl text-slate-600 dark:text-slate-400"
+                  }`}
+                >
+                  {word.traditional}
+                </p>
+                {word.simplified !== word.traditional ? (
+                  <p className="mt-1 text-center text-xs text-slate-500 dark:text-slate-400">
+                    simplified {word.simplified}
+                  </p>
+                ) : null}
+              </div>
+            )
+          )}
 
           <p className="mt-4 text-center text-sm text-slate-700 dark:text-slate-300">
             {word.english}
@@ -409,6 +439,7 @@ export function DictationSession({ level }: { level: number }) {
           <p className="mt-1 text-center text-xs text-slate-500 dark:text-slate-400">
             {word.category}
           </p>
+          <ScriptToggle className="mx-auto mt-4 max-w-xs" />
         </div>
       ) : null}
 

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { LevelCard } from "./components/LevelCard";
+import { ScriptToggle } from "./components/ScriptToggle";
 import { PROGRESS_EVENT } from "./components/SyncInit";
 import { ToneLegend } from "./components/ToneLegend";
 import { dueCount, loadProgress, masteryForLevel } from "./lib/srs";
@@ -42,6 +43,8 @@ export default function HomePage() {
           </p>
         ) : null}
       </header>
+
+      <ScriptToggle className="mb-4" />
 
       <div className="space-y-3">
         {LEVELS.map((meta) => {
