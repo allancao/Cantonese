@@ -133,7 +133,14 @@ export function DictationSession({ level }: { level: number }) {
   );
 
   function listen() {
-    if (listening || result) return;
+    if (result) return;
+    if (listening) {
+      micRef.current?.abort();
+      micRef.current = null;
+      setListening(false);
+      setInterim("");
+      return;
+    }
     setMicError(null);
     setMicErrorCode(null);
     setInterim("");
@@ -330,19 +337,19 @@ export function DictationSession({ level }: { level: number }) {
             <button
               type="button"
               onClick={listen}
-              disabled={result !== null || listening}
+              disabled={result !== null}
               className={`mx-auto flex h-16 w-16 items-center justify-center rounded-full border-2 text-2xl transition active:scale-95 disabled:opacity-50 ${
                 listening
                   ? "animate-pulse border-rose-400 bg-rose-50 dark:bg-rose-950/40"
                   : "border-slate-300 bg-white dark:border-slate-700 dark:bg-slate-950"
               }`}
-              aria-label={listening ? "Listening" : "Tap to answer out loud"}
+              aria-label={listening ? "Stop listening" : "Tap to answer out loud"}
             >
               🎤
             </button>
             <p className="mt-2 text-center text-xs text-slate-500 dark:text-slate-400">
               {listening
-                ? interim || "Listening…"
+                ? interim || "Listening… tap to stop"
                 : result
                   ? " "
                   : "Tap the mic and say the word"}

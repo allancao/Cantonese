@@ -56,6 +56,7 @@ interface RecognitionLike {
   onresult: ((event: ResultEventLike) => void) | null;
   onerror: ((event: ErrorEventLike) => void) | null;
   onend: (() => void) | null;
+  onstart: (() => void) | null;
 }
 type RecognitionConstructor = new () => RecognitionLike;
 
@@ -77,6 +78,17 @@ export function isRecognitionSupported(): boolean {
  * asking for the wrong one is a recognisable error, so try them in order.
  */
 const LANGUAGES = ["yue-Hant-HK", "zh-HK"];
+
+/**
+ * Safari will not start a session while a previous one still holds the audio
+ * session, and it signals that by emitting nothing at all — no start, no error,
+ * no end — so the UI waits on a recogniser that never runs. Tracking the live
+ * instance means the last one is always torn down before a new one begins.
+ */
+let liveRecognition: RecognitionLike | null = null;
+
+/** Nothing arriving within this long means the session will never produce anything. */
+const NO_RESPONSE_MS = 10_000;
 
 function mapError(code: string): RecognitionError {
   switch (code) {
@@ -106,10 +118,16 @@ export function startListening(callbacks: ListenCallbacks): RecognitionHandle | 
     return null;
   }
 
+  // Release whatever ran last: Safari holds the microphone until it is told not to.
+  liveRecognition?.abort();
+  liveRecognition = null;
+
   let active: RecognitionLike | null = null;
   let languageIndex = 0;
   let settled = false;
   let cancelled = false;
+  let started = false;
+  let watchdog: ReturnType<typeof setTimeout> | undefined;
   /**
    * Safari frequently ends a session having only ever emitted interim results,
    * never marking one final. Holding the last interim means a heard answer is
@@ -117,9 +135,35 @@ export function startListening(callbacks: ListenCallbacks): RecognitionHandle | 
    */
   let lastInterim = "";
 
+  function finish() {
+    if (watchdog !== undefined) clearTimeout(watchdog);
+    watchdog = undefined;
+    // Hand the microphone back straight away rather than waiting for teardown on
+    // the next attempt, which is what left the following word listening forever.
+    active?.abort();
+    if (liveRecognition === active) liveRecognition = null;
+  }
+
   function run() {
     const recognition = new Recognition!();
     active = recognition;
+    liveRecognition = recognition;
+
+    if (watchdog !== undefined) clearTimeout(watchdog);
+    watchdog = setTimeout(() => {
+      if (settled || cancelled) return;
+      settled = true;
+      finish();
+      callbacks.onError(
+        started ? "no-speech" : "unknown",
+        started ? "no-result-before-timeout" : "never-started"
+      );
+      callbacks.onEnd?.();
+    }, NO_RESPONSE_MS);
+
+    recognition.onstart = () => {
+      started = true;
+    };
     recognition.lang = LANGUAGES[languageIndex];
     recognition.continuous = false;
     recognition.interimResults = true;
@@ -132,6 +176,7 @@ export function startListening(callbacks: ListenCallbacks): RecognitionHandle | 
         const transcript = result[0].transcript;
         if (result.isFinal) {
           settled = true;
+          finish();
           const text = transcript.trim() || lastInterim;
           if (text) callbacks.onResult(text);
           else callbacks.onError("no-speech", "empty-final-result");
@@ -153,17 +198,23 @@ export function startListening(callbacks: ListenCallbacks): RecognitionHandle | 
         event.error === "language-not-supported" || event.error === "service-not-allowed";
       if (retryable && languageIndex + 1 < LANGUAGES.length) {
         languageIndex += 1;
+        // Release this attempt before the next one, or it keeps the microphone
+        // and the retry is the session that silently never starts.
+        recognition.abort();
+        if (liveRecognition === recognition) liveRecognition = null;
         run();
         return;
       }
       if (event.error === "aborted" || cancelled) return;
       settled = true;
+      finish();
       callbacks.onError(mapError(event.error), event.error);
     };
 
     recognition.onend = () => {
       if (!settled && !cancelled) {
         settled = true;
+        finish();
         // Only a session that produced no transcript at all counts as unheard.
         if (lastInterim) callbacks.onResult(lastInterim);
         else callbacks.onError("no-speech", "ended-without-result");
@@ -175,6 +226,7 @@ export function startListening(callbacks: ListenCallbacks): RecognitionHandle | 
       recognition.start();
     } catch (error) {
       settled = true;
+      finish();
       callbacks.onError("unknown", `start-threw: ${(error as Error).name}`);
     }
   }
@@ -185,7 +237,7 @@ export function startListening(callbacks: ListenCallbacks): RecognitionHandle | 
     stop: () => active?.stop(),
     abort: () => {
       cancelled = true;
-      active?.abort();
+      finish();
     },
   };
 }
