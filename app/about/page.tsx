@@ -74,13 +74,6 @@ export default function AboutPage() {
             grades it identically. On iOS that needs a Cantonese keyboard added under
             Settings → General → Keyboard.
           </p>
-          <p className="mt-2">
-            One thing to know: recognition returns characters, not Jyutping, so a spoken
-            answer can&apos;t be marked for tone the way a typed one can. It is still a
-            real tone check, just an indirect one — say the wrong tone and the recogniser
-            usually hears a different word, which comes back as a miss. For explicit
-            per-syllable tone feedback, type the Jyutping.
-          </p>
         </section>
 
         <section>
