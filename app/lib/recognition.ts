@@ -110,6 +110,12 @@ export function startListening(callbacks: ListenCallbacks): RecognitionHandle | 
   let languageIndex = 0;
   let settled = false;
   let cancelled = false;
+  /**
+   * Safari frequently ends a session having only ever emitted interim results,
+   * never marking one final. Holding the last interim means a heard answer is
+   * still used rather than discarded as "didn't catch that".
+   */
+  let lastInterim = "";
 
   function run() {
     const recognition = new Recognition!();
@@ -126,12 +132,17 @@ export function startListening(callbacks: ListenCallbacks): RecognitionHandle | 
         const transcript = result[0].transcript;
         if (result.isFinal) {
           settled = true;
-          callbacks.onResult(transcript.trim());
+          const text = transcript.trim() || lastInterim;
+          if (text) callbacks.onResult(text);
+          else callbacks.onError("no-speech", "empty-final-result");
           return;
         }
         interim += transcript;
       }
-      if (interim) callbacks.onInterim?.(interim.trim());
+      if (interim.trim()) {
+        lastInterim = interim.trim();
+        callbacks.onInterim?.(lastInterim);
+      }
     };
 
     recognition.onerror = (event) => {
@@ -151,10 +162,11 @@ export function startListening(callbacks: ListenCallbacks): RecognitionHandle | 
     };
 
     recognition.onend = () => {
-      // Ending without a final result means the listener heard nothing usable.
       if (!settled && !cancelled) {
         settled = true;
-        callbacks.onError("no-speech", "ended-without-result");
+        // Only a session that produced no transcript at all counts as unheard.
+        if (lastInterim) callbacks.onResult(lastInterim);
+        else callbacks.onError("no-speech", "ended-without-result");
       }
       callbacks.onEnd?.();
     };
