@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { JyutpingSyllable } from "../../../components/JyutpingSyllable";
-import { ScriptToggle, useScriptPreference } from "../../../components/ScriptToggle";
 import { ToneLegend } from "../../../components/ToneLegend";
 import { playWord } from "../../../lib/audio";
 import { loadSpeed, saveSpeed, SPEED_EVENT, type PlaybackSpeed } from "../../../lib/display";
@@ -82,7 +81,6 @@ export function DictationSession({ level }: { level: number }) {
   const [interim, setInterim] = useState("");
   const [micError, setMicError] = useState<RecognitionError | null>(null);
   const [micErrorCode, setMicErrorCode] = useState<string | null>(null);
-  const script = useScriptPreference();
   const [speed, setSpeed] = useState<PlaybackSpeed>(1);
   const inputRef = useRef<HTMLInputElement>(null);
   const micRef = useRef<RecognitionHandle | null>(null);
@@ -284,15 +282,12 @@ export function DictationSession({ level }: { level: number }) {
         </p>
 
         {textOnly && word ? (
-          <p
-            className={
-              script === "jyutping"
-                ? "mt-3 text-center text-2xl font-medium"
-                : "mt-3 text-center font-han text-4xl"
-            }
-          >
-            {script === "jyutping" ? word.jyutping : word.traditional}
-          </p>
+          <div className="mt-3">
+            <p className="text-center text-2xl font-medium">{word.jyutping}</p>
+            <p className="mt-1 text-center font-han text-xl text-slate-500 dark:text-slate-400">
+              {word.traditional}
+            </p>
+          </div>
         ) : null}
 
         {mode === "speak" && !result && word ? (
@@ -433,42 +428,26 @@ export function DictationSession({ level }: { level: number }) {
           </div>
           <p className="mt-0.5 text-sm text-slate-700 dark:text-slate-300">{result.detail}</p>
 
-          {/* Whichever script the learner reads goes first and largest; the other
-              stays on screen so it keeps being absorbed rather than hidden. */}
-          {(script === "jyutping"
-            ? (["jyutping", "characters"] as const)
-            : (["characters", "jyutping"] as const)
-          ).map((part, order) =>
-            part === "jyutping" ? (
-              <div
-                key="jyutping"
-                className={`flex flex-wrap justify-center gap-1.5 ${order === 0 ? "mt-4 text-lg" : "mt-4"}`}
-              >
-                {syllables.map((syllable, position) => (
-                  <JyutpingSyllable
-                    key={`${word.id}-${position}`}
-                    syllable={syllable}
-                    flagged={result.toneErrors.includes(position)}
-                  />
-                ))}
-              </div>
-            ) : (
-              <div key="characters">
-                <p
-                  className={`mt-4 text-center font-han ${
-                    order === 0 ? "text-5xl" : "text-2xl text-slate-600 dark:text-slate-400"
-                  }`}
-                >
-                  {word.traditional}
-                </p>
-                {word.simplified !== word.traditional ? (
-                  <p className="mt-1 text-center text-xs text-slate-500 dark:text-slate-400">
-                    simplified {word.simplified}
-                  </p>
-                ) : null}
-              </div>
-            )
-          )}
+          {/* Jyutping leads: this is the reading being practised, and the
+              characters sit underneath so both are on screen either way. */}
+          <div className="mt-4 flex flex-wrap justify-center gap-1.5 text-lg">
+            {syllables.map((syllable, position) => (
+              <JyutpingSyllable
+                key={`${word.id}-${position}`}
+                syllable={syllable}
+                flagged={result.toneErrors.includes(position)}
+              />
+            ))}
+          </div>
+
+          <p className="mt-3 text-center font-han text-3xl text-slate-600 dark:text-slate-400">
+            {word.traditional}
+          </p>
+          {word.simplified !== word.traditional ? (
+            <p className="mt-1 text-center text-xs text-slate-500 dark:text-slate-400">
+              simplified {word.simplified}
+            </p>
+          ) : null}
 
           <p className="mt-4 text-center text-sm text-slate-700 dark:text-slate-300">
             {word.english}
@@ -482,7 +461,6 @@ export function DictationSession({ level }: { level: number }) {
               {result.heardJyutping ? ` · ${result.heardJyutping}` : ""}
             </p>
           ) : null}
-          <ScriptToggle className="mx-auto mt-4 max-w-xs" />
         </div>
       ) : null}
 
